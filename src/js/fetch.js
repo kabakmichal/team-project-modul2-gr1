@@ -18,7 +18,7 @@ fetchOnStart();
 
 
 const fetchInput = async(title)=>{
-    const response = await fetch(`${BASE_URL}/search/${title}${API_KEY}&page=1`);
+    const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=32592fc1c467ab313147df8555d6672d&query=${title}&page=1`);
     const responseObject = await response.json();
 
     return responseObject;
@@ -39,8 +39,11 @@ inputBtn.addEventListener('click', async event => {
 
         const totalMovies = await array.total_results;
 
-        console.log(`Array of Movies: ${arrayMovies}`);s
         console.log(`Total results: ${totalMovies}`);
+
+        arrayMovies.forEach(async movie=>{
+            console.log(movie);
+        })
     }catch(error){
         console.error(error);
     }
