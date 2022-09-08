@@ -1,0 +1,24 @@
+.page-footer {
+  background-color: $footerBg;
+  padding: 29px;
+  font-size: 14px;
+  line-height: 1.142;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: $inputColor;
+}
+
+.footer-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.footer__span {
+  color: $accentColor;
+  text-decoration: underline;
+}
+.footer__text {
+  text-decoration: underline;
+}
