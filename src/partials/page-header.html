@@ -1,31 +1,43 @@
 <header class="page-header">
-    <div class="container">
-        <div class="header-wrapper">
-            <a class="page-header__logo link" href="index.html">
-                <svg width="24" height="24">
-                    <use href="./svg/sprite.svg#icon-logo"></use>
-                </svg></a>
-            <span class="logo__label"> Filmoteka</span>
-            <nav class="navigation">
-                <ul class="navigation__list list">
-                    <li class="navigation__item">
-                        <a class="navigation__link navigation__link--active link " href="index.html">HOME</a>
-                    </li>
-                    <li class="navigation__item">
-                        <a class="navigation__link link" href="library.html">MY LIBRARY</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-
-        <form class="search-form" id="search-form">
-            <input type="text" name="searchQuery" autocomplete="off" placeholder="Search movie..." />
-            <button type="submit">
-                <svg width="20" height="20">
-                    <use href="./svg/sprite.svg#icon-search"></use>
-                </svg>
-            </button>
-        </form>
-        <p class="input-notification"></p>
+  <div class="container">
+    <div class="header-wrapper">
+      <a class="page-header__logo link" href="./index.html">
+        <svg width="24" height="24">
+          <use href="./svg/sprite.svg#icon-logo"></use></svg></a>
+          <a class="link" href="./index.html"><span class="logo__label"> Filmoteka</span></a>
+      <nav class="navigation">
+        <ul class="navigation__list list">
+          <li class="navigation__item">
+            <a
+              class="navigation__link navigation__link--active link"
+              href="./index.html"
+              >HOME</a
+            >
+          </li>
+          <li class="navigation__item">
+            <a class="navigation__link link" href="./library.html"
+              >MY LIBRARY</a
+            >
+          </li>
+        </ul>
+      </nav>
     </div>
+    <div class="search-form__wrapper">
+      <form class="search-form" id="search-form">
+        <input
+          class="search-form__input"
+          type="text"
+          name="searchQuery"
+          autocomplete="off"
+          placeholder="Search movie..."
+        />
+        <button class="search-form__btn" type="submit">
+          <svg class="search-form__icon" width="20" height="20">
+            <use href="./svg/sprite.svg#icon-search"></use>
+          </svg>
+        </button>
+      </form>
+      <p class="input-notification"></p>
+    </div>
+  </div>
 </header>

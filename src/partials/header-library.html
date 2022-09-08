@@ -1,27 +1,29 @@
 <header class="library-header">
   <div class="container">
-    <div class="header-wrapper">
-      <a class="page-header__logo" href="index.html">
+    <div class="header-wrapper header-wrapper--library">
+      <a class="page-header__logo link" href="./index.html">
         <svg width="24" height="24">
           <use href="./svg/sprite.svg#icon-logo"></use></svg></a>
-      <span class="logo__label"> Filmoteka</span>
+      <a class="link" href="./index.html"
+        ><span class="logo__label"> Filmoteka</span></a>
       <nav class="navigation">
         <ul class="navigation__list list">
           <li class="navigation__item">
-            <a class="navigation__link link" href="index.html">HOME</a>
+            <a class="navigation__link link" href="./index.html">HOME</a>
           </li>
           <li class="navigation__item">
             <a
               class="navigation__link navigation__link--active link"
-              href="library.html"
+              href="./library.html"
               >MY LIBRARY</a
             >
           </li>
         </ul>
       </nav>
     </div>
-
-    <button type="button" class="library-header__button">WATCHED</button>
-    <button type="button" class="library-header__button">QUEUE</button>
+    <div class="library-btn__wrapper">
+      <button type="button" class="library-header__button">WATCHED</button>
+      <button type="button" class="library-header__button">QUEUE</button>
+    </div>
   </div>
 </header>
