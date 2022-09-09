@@ -9,8 +9,8 @@ let page = 1;
 const fetchOnStart = async() => {
 const response = await fetch(`${BASE_URL}${MAIN_PAGE_URL}${API_KEY}&page=1`);
      const data = await response.json();
-   console.log(data);
-    //return data;
+    console.log(data);
+    return data;
 }
 // fetchTMDB(API_URL);
 fetchOnStart();
@@ -47,4 +47,6 @@ inputBtn.addEventListener('click', async event => {
     }catch(error){
         console.error(error);
     }
-})
+}) 
+
+export{fetchOnStart}
