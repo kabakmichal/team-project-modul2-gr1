@@ -1,4 +1,5 @@
 import './sass/index.scss';
+
 import { fetchOnStart } from './js/fetch';
 import {movieSet} from './js/movieSet';
 
@@ -8,3 +9,4 @@ fetchOnStart()
         return movieSet(data.results)
     })
     .catch(err => { return console.error(err)})
+=======
