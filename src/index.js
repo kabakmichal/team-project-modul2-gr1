@@ -8,5 +8,4 @@ fetchOnStart()
         JSON.parse(data);
         return movieSet(data.results)
     })
-    .catch(err => { return console.error(err)})
-=======
+    .catch(err => { return console.error(err)});
