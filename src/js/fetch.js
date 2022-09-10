@@ -49,6 +49,7 @@ const renderMovies = async movies => {
 };
 
 const pagination = async (totalPages, title) => {
+  // paginationBtns = '';
   if (totalPages >= 1) {
     for (let i = 1; i <= totalPages; i++) {
       let btn = document.createElement('button');
