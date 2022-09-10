@@ -20,7 +20,6 @@ let movieSet = (data) => {
     </div>
 </div>
 `}).join("");
-    console.log(markup);
     return gallery.insertAdjacentHTML('beforeend',markup);
 };
 export {movieSet}

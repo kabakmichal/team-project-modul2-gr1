@@ -1,0 +1,30 @@
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap:20px;
+    padding-top: 20px;
+   
+}
+.movie-card:hover {
+    scale:110%;
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px){
+    .movie-card {
+            flex-basis: calc(100% + 50px)/1;
+        }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px){
+    .movie-card {
+            flex-basis: calc((100% + 50px)/1);
+        }
+}
+
+@media screen and (min-width: 1024px) {
+    .movie-card {
+            flex-basis: calc((100% + 50px)/4);
+        }
+}
+

@@ -18,7 +18,6 @@ const fetchOnStart = async () => {
   return data;
 };
 
-fetchOnStart();
 
 const fetchInput = async title => {
   const response = await fetch(
