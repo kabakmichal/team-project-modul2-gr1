@@ -1,12 +1,12 @@
 const inputBtn = document.querySelector('.search-form__btn');
 const inputTitle = document.querySelector('.search-form__input');
-const galleryMovie = document.querySelector('.gallery');
+const gallery = document.querySelector('.gallery');
 const paginationBtns = document.querySelector('.pagination_btns');
 
 const API_KEY = '?api_key=32592fc1c467ab313147df8555d6672d';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const MAIN_PAGE_URL = '/trending/all/day';
-
+// const GENRE_URL = '/genre/movie/list';
 let page = 1;
 
 const fetchOnStart = async () => {
@@ -28,25 +28,34 @@ const fetchInput = async title => {
   return responseObject;
 };
 
-const renderMovies = async movies => {
-  const markup = movies
-    .map(
-      movie => `<div class="movie-card">
-        <img src='${movie.backdrop_path}'/>
-        <div class='info'>
-        <p class="title">
-            <b>Title</b> ${movie.original_title}
-        </p>
-        <p class="rate">
-            <b>Rate</b> ${movie.vote_average}
-        </p>
-        </div>
-        </div>`
-    )
-    .join('');
 
-  galleryMovie.innerHTML = markup;
+let renderMovies = (data) => {
+  gallery.innerHTML = '';
+  const markup = data
+      .map(
+      
+          ({poster_path,release_date,title, genre_ids}) => {
+              return `<div class="movie-card">
+  <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="" loading="lazy" />
+  <div class="movie-card__info">
+      <p class="movie-card__title">
+          <span>${title}</span>
+      </p>
+  <div class= "genreDate">
+      <p class="movie-card__genre">
+          <span>${genre_ids}</span>
+      </p>
+      <p class="movie-card__year">${release_date}
+          <span></span>
+      </p>
+  </div>
+  </div>
+</div>
+`}).join("");
+  return gallery.insertAdjacentHTML('beforeend',markup);
 };
+
+
 
 const pagination = async (totalPages, title) => {
   // paginationBtns = '';

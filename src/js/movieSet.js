@@ -4,19 +4,21 @@ let movieSet = (data) => {
     const markup = data
         .map(
         //trzeba dodać genre, ale mamy tylko genre_ids(cyfry)
-            ({poster_path,release_date,title}) => {
+            ({poster_path,release_date,title, genre_ids}) => {
                 return `<div class="movie-card">
     <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="" loading="lazy" />
     <div class="movie-card__info">
         <p class="movie-card__title">
             <span>${title}</span>
         </p>
+    <div class= "genreDate">
         <p class="movie-card__genre">
-            <span>genre</span>
+            <span>${genre_ids}</span>
         </p>
-        <p class="movie-card__year">
-            <span>${release_date}</span>
+        <p class="movie-card__year">${release_date}
+            <span></span>
         </p>
+    </div>
     </div>
 </div>
 `}).join("");
