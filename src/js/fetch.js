@@ -8,6 +8,7 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 const MAIN_PAGE_URL = '/trending/all/day';
 
 let page = 1;
+
 const fetchOnStart = async () => {
   const response = await fetch(
     `${BASE_URL}${MAIN_PAGE_URL}${API_KEY}&page=${page}`
@@ -91,3 +92,7 @@ inputBtn.addEventListener('click', async event => {
     console.error(error);
   }
 });
+
+
+export{fetchOnStart}
+
