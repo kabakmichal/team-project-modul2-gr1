@@ -1,3 +1,4 @@
+import { getGenre } from "../js/getGenre";
 const inputBtn = document.querySelector('.search-form__btn');
 const inputTitle = document.querySelector('.search-form__input');
 const gallery = document.querySelector('.gallery');

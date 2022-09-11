@@ -6,30 +6,25 @@ const genreList = async () => {
   return data.genres;
 };
 
-const getGenre = (genreId) => {
+const getGenre = genreId => {
   let genresDescription = '';
    genreList()
     .then(data => {
-      genreId.forEach(element => {
+       genreId.forEach(element => {
         genresDescription += `${
           data.find(secondElement => secondElement.id === element).name
         }, `;
       });
-     //console.log(genresDescription);
-      return genresDescription.toString();
+      // console.log(genresDescription);
+      string = genresDescription;
     })
     .catch(error => console.log(error));
 };
 
 const list = [28, 12, 14];
-//let string = '';
+
 //string = getGenre(list);
 //console.log(`lece stringiem ${string}`);
-const wait = () => console.log(getGenre(list));
-
-console.log(wait());
 console.log(getGenre(list));
-console.log(getGenre(list));
-
 
 export { getGenre };
