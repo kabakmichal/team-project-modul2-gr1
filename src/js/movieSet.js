@@ -6,18 +6,21 @@ let movieSet = async data => {
   const markup = data
     .map(
       //trzeba dodać genre, ale mamy tylko genre_ids(cyfry)
-      ({ poster_path, release_date, title, genre_ids }) => {
+      ({ poster_path, release_date,first_air_date, title, name, genre_ids }) => {
         return `<div class="movie-card">
-    <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="" loading="lazy" />
+    <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${
+          title || name}" loading="lazy" />
     <div class="movie-card__info">
         <p class="movie-card__title">
-            <span>${title}</span>
+            <span>${title || name}</span>
         </p>
     <div class= "genreDate">
         <p class="movie-card__genre">
             <span>${genre_ids.map(id => genreDict[id]).join(', ')}</span>
         </p>
-        <p class="movie-card__year">${release_date}
+        <p class="movie-card__year">${(
+          release_date ||
+          first_air_date).slice(0, 4)}
             <span></span>
         </p>
     </div>
