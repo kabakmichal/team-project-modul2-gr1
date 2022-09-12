@@ -1,8 +1,11 @@
 import { getGenre } from './getGenre';
+import { spinnerHidden } from "./spinner";
+import { spinnerVisible } from "./spinner";
+
 const inputBtn = document.querySelector('.search-form__btn');
 const inputTitle = document.querySelector('.search-form__input');
-const gallery = document.querySelector('.gallery');
-const paginationBtns = document.querySelector('.pagination_btns');
+export const gallery = document.querySelector('.gallery');
+export const paginationBtns = document.querySelector('.pagination_btns');
 
 const API_KEY = '?api_key=32592fc1c467ab313147df8555d6672d';
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -28,22 +31,25 @@ const fetchInput = async title => {
   return responseObject;
 };
 
+//w <p class="movie-card__year">${release_date || first_air_date} nie działa mi slice popatrzę jeszcze dlaczego
+
 let renderMovies = async data => {
   const genreDict = await getGenre();
   gallery.innerHTML = '';
   const markup = data
-    .map(({ poster_path, release_date, title, genre_ids }) => {
+    .map(({ poster_path, release_date, first_air_date, title,name, genre_ids }) => {
       return `<div class="movie-card">
-  <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="" loading="lazy" />
+  <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${
+          title || name}" loading="lazy" />
   <div class="movie-card__info">
       <p class="movie-card__title">
-          <span>${title}</span>
+          <span>${title || name}</span>
       </p>
   <div class= "genreDate">
       <p class="movie-card__genre">
-          <span>${genre_ids.map(id => genreDict[id]).join(', ')}</span>
+          <span>${genre_ids.map(id => genreDict[id]).join(',')}</span>
       </p>
-      <p class="movie-card__year">${release_date}
+      <p class="movie-card__year">${release_date || first_air_date} 
           <span></span>
       </p>
   </div>
@@ -80,6 +86,13 @@ inputBtn.addEventListener('click', async event => {
     array.results.forEach(async movie => {
       arrayMovies.push(movie);
     });
+
+     if (!array.total_results) {
+      spinnerVisible();
+      
+    } else {
+      spinnerHidden();
+    }
 
     renderMovies(arrayMovies);
 

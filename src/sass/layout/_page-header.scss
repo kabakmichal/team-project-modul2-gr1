@@ -127,10 +127,10 @@
   font-size: 14px;
   line-height: 1.142;
   display: flex;
-  color: $inputColor;
+  color: $mainColor;
   background: transparent;
   border: none;
-  border-bottom: 0.5px solid $mainColor;
+  border-bottom: 0.5px solid $inputColor;
   outline: none;
 
   &:focus {
@@ -152,12 +152,15 @@
 }
 
 .input-notification {
+  width: 280px;
+  margin: 22px auto 0;
   font-size: 14px;
   line-height: 1.142;
   display: flex;
   align-items: center;
   text-align: center;
   color: $errorColor;
+  visibility: hidden;
 }
 
 @media screen and (max-width: 767px) {
@@ -197,6 +200,10 @@
   .search-form__input {
     width: 336px;
   }
+.input-notification{
+  width:393px;
+}
+
 }
 
 @media screen and (min-width: 1024px) {
