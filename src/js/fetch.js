@@ -37,26 +37,17 @@ let renderMovies = async data => {
   const genreDict = await getGenre();
   gallery.innerHTML = '';
   const markup = data
-    .map(
-      ({
-        poster_path,
-        release_date,
-        first_air_date,
-        title,
-        name,
-        genre_ids,
-      }) => {
-        return `<div class="movie-card">
-  <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${
-          title || name
-        }" loading="lazy" />
+    .map(({ poster_path, release_date, first_air_date, title,name, genre_ids }) => {
+      return `<div class="movie-card">
+  <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" onerror="this.src = 'https://picsum.photos/id/237/274/398';" alt="image of movie" loading="lazy" />
+
   <div class="movie-card__info">
       <p class="movie-card__title">
           <span>${title || name}</span>
       </p>
   <div class= "genreDate">
       <p class="movie-card__genre">
-          <span>${genre_ids.map(id => genreDict[id]).join(',')}</span>
+          <span>${genre_ids.map(id => genreDict[id]).join(', ')}</span>
       </p>
       <p class="movie-card__year">${release_date || first_air_date} 
           <span></span>
