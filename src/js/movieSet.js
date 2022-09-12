@@ -30,13 +30,3 @@ let movieSet = async data => {
   return gallery.insertAdjacentHTML('beforeend', markup);
 };
 export { movieSet };
-
-// 0
-// : 
-// 10759
-// 1
-// : 
-// 18
-// 2
-// : 
-// 10765

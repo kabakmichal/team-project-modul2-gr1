@@ -1,4 +1,4 @@
-import { getGenre } from "../js/getGenre";
+import { getGenre } from './getGenre';
 const inputBtn = document.querySelector('.search-form__btn');
 const inputTitle = document.querySelector('.search-form__input');
 const gallery = document.querySelector('.gallery');
@@ -19,7 +19,6 @@ const fetchOnStart = async () => {
   return data;
 };
 
-
 const fetchInput = async title => {
   const response = await fetch(
     `https://api.themoviedb.org/3/search/movie?api_key=32592fc1c467ab313147df8555d6672d&query=${title}&page=${page}&include_adult=false`
@@ -29,14 +28,12 @@ const fetchInput = async title => {
   return responseObject;
 };
 
-
-let renderMovies = (data) => {
+let renderMovies = async data => {
+  const genreDict = await getGenre();
   gallery.innerHTML = '';
   const markup = data
-      .map(
-      
-          ({poster_path,release_date,title, genre_ids}) => {
-              return `<div class="movie-card">
+    .map(({ poster_path, release_date, title, genre_ids }) => {
+      return `<div class="movie-card">
   <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="" loading="lazy" />
   <div class="movie-card__info">
       <p class="movie-card__title">
@@ -44,7 +41,7 @@ let renderMovies = (data) => {
       </p>
   <div class= "genreDate">
       <p class="movie-card__genre">
-          <span>${genre_ids}</span>
+          <span>${genre_ids.map(id => genreDict[id]).join(', ')}</span>
       </p>
       <p class="movie-card__year">${release_date}
           <span></span>
@@ -52,11 +49,11 @@ let renderMovies = (data) => {
   </div>
   </div>
 </div>
-`}).join("");
-  return gallery.insertAdjacentHTML('beforeend',markup);
+`;
+    })
+    .join('');
+  return gallery.insertAdjacentHTML('beforeend', markup);
 };
-
-
 
 const pagination = async (totalPages, title) => {
   // paginationBtns = '';
@@ -102,6 +99,4 @@ inputBtn.addEventListener('click', async event => {
   }
 });
 
-
-export{fetchOnStart}
-
+export { fetchOnStart };
