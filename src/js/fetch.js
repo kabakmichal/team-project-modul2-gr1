@@ -1,6 +1,6 @@
 import { getGenre } from './getGenre';
-import { spinnerHidden } from "./spinner";
-import { spinnerVisible } from "./spinner";
+import { spinnerHidden } from './spinner';
+import { spinnerVisible } from './spinner';
 
 const inputBtn = document.querySelector('.search-form__btn');
 const inputTitle = document.querySelector('.search-form__input');
@@ -40,6 +40,7 @@ let renderMovies = async data => {
     .map(({ poster_path, release_date, first_air_date, title,name, genre_ids }) => {
       return `<div class="movie-card">
   <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" onerror="this.src = 'https://picsum.photos/id/237/274/398';" alt="image of movie" loading="lazy" />
+
   <div class="movie-card__info">
       <p class="movie-card__title">
           <span>${title || name}</span>
@@ -55,7 +56,8 @@ let renderMovies = async data => {
   </div>
 </div>
 `;
-    })
+      }
+    )
     .join('');
   return gallery.insertAdjacentHTML('beforeend', markup);
 };
@@ -86,9 +88,8 @@ inputBtn.addEventListener('click', async event => {
       arrayMovies.push(movie);
     });
 
-     if (!array.total_results) {
+    if (!array.total_results) {
       spinnerVisible();
-      
     } else {
       spinnerHidden();
     }
