@@ -22,3 +22,18 @@
 .footer__text {
   text-decoration: underline;
 }
+
+.top-btn {
+ 
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  cursor: pointer;
+  transform: scale(1.8);
+  opacity: 0;
+  transition: 500ms;
+  background-color: $accentColor;
+  border-radius: 50%;
+  border: none;
+  color: $mainColor;
+}
