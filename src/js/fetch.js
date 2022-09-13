@@ -1,6 +1,7 @@
 import { getGenre } from './getGenre';
 import { spinnerHidden } from './spinner';
 import { spinnerVisible } from './spinner';
+import { topBtn } from './scrollToTop';
 
 const inputBtn = document.querySelector('.search-form__btn');
 const inputTitle = document.querySelector('.search-form__input');
