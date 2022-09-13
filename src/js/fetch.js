@@ -71,13 +71,46 @@ let renderMovies = async data => {
   return gallery.insertAdjacentHTML('beforeend', markup);
 };
 
-const pagination = async (totalPages, title) => {
-  // paginationBtns = '';
-  if (totalPages >= 1) {
-    for (let i = 1; i <= totalPages; i++) {
-      let btn = document.createElement('button');
-      btn.innerHTML = i;
+let currentPage = 131;
+let recordsPerPage = 2;
 
+const pagination = async (totalPages, title) => {
+  paginationBtns.innerHTML = '';
+  const maxLoop = totalPages + 1;
+  if (totalPages >= 1) {
+    for (let i = 0; i <= maxLoop; i++) {
+      let btn = document.createElement('button');
+      if (i === 0) {
+        btn.innerHTML = '<';
+      }
+      if (i === maxLoop) {
+        btn.innerHTML = '>';
+      }
+      if (totalPages <= 9 && i >= 1 && i <= totalPages) {
+        btn.innerHTML = i;
+      }
+      if (totalPages > 9) {
+        if (i === 0) {
+          btn.innerHTML = '<';
+        }
+        if (i === maxLoop) {
+          btn.innerHTML = '>';
+        }
+        if (i > 0 && i < maxLoop) {
+          btn.innerHTML = i;
+          if (i === 1 || i === totalPages) {
+            btn.innerHTML = i;
+          } else if (currentPage >= 5 && currentPage > 0 && i === 2) {
+            btn.innerHTML = '...';
+          } else if (currentPage <= totalPages - 4 && i === totalPages - 1) {
+            btn.innerHTML = '...';
+          } else {
+            if (i < currentPage - 2 || (i > currentPage + 2 && i >= 8)) {
+              continue;
+            }
+          }
+        }
+      }
       paginationBtns.appendChild(btn);
     }
   }
