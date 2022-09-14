@@ -1,7 +1,6 @@
 import { getGenre } from './getGenre';
 import { spinnerHidden } from './spinner';
 import { spinnerVisible } from './spinner';
-import { topBtn } from './scrollToTop';
 
 const inputBtn = document.querySelector('.search-form__btn');
 const inputTitle = document.querySelector('.search-form__input');
@@ -11,19 +10,15 @@ export const paginationBtns = document.querySelector('.pagination_btns');
 const API_KEY = '?api_key=32592fc1c467ab313147df8555d6672d';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const MAIN_PAGE_URL = '/trending/all/day';
-// const GENRE_URL = '/genre/movie/list';
-let page = 1;
 
 const fetchOnStart = async () => {
-  const response = await fetch(
-    `${BASE_URL}${MAIN_PAGE_URL}${API_KEY}&page=${page}`
-  );
+  const response = await fetch(`${BASE_URL}${MAIN_PAGE_URL}${API_KEY}&page=1`);
   const data = await response.json();
   console.log(data);
   return data;
 };
 
-const fetchInput = async title => {
+const fetchInput = async (title, page = 1) => {
   const response = await fetch(
     `https://api.themoviedb.org/3/search/movie?api_key=32592fc1c467ab313147df8555d6672d&query=${title}&page=${page}&include_adult=false`
   );
@@ -38,8 +33,16 @@ let renderMovies = async data => {
   const genreDict = await getGenre();
   gallery.innerHTML = '';
   const markup = data
-    .map(({ poster_path, release_date, first_air_date, title,name, genre_ids }) => {
-      return `<div class="movie-card">
+    .map(
+      ({
+        poster_path,
+        release_date,
+        first_air_date,
+        title,
+        name,
+        genre_ids,
+      }) => {
+        return `<div class="movie-card">
   <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" onerror="this.src = 'https://picsum.photos/id/237/274/398';" alt="image of movie" loading="lazy" />
 
   <div class="movie-card__info">
@@ -63,10 +66,9 @@ let renderMovies = async data => {
   return gallery.insertAdjacentHTML('beforeend', markup);
 };
 
-let currentPage = 131;
-let recordsPerPage = 2;
+let currentPage = 1;
 
-const pagination = async (totalPages, title) => {
+const pagination = async (totalPages, title, currentPage) => {
   paginationBtns.innerHTML = '';
   const maxLoop = totalPages + 1;
   if (totalPages >= 1) {
@@ -74,22 +76,88 @@ const pagination = async (totalPages, title) => {
       let btn = document.createElement('button');
       if (i === 0) {
         btn.innerHTML = '<';
+        btn.addEventListener('click', async () => {
+          if (currentPage === 1) {
+            return;
+          }
+          const title = inputTitle.value.trim();
+          try {
+            const array = await fetchInput(title, currentPage - 1);
+            console.log(array);
+            const arrayMovies = [];
+            array.results.forEach(async movie => {
+              arrayMovies.push(movie);
+            });
+            renderMovies(arrayMovies);
+            currentPage -= 1;
+            pagination(totalPages, title, currentPage);
+            return currentPage;
+          } catch (error) {
+            console.error(error);
+          }
+        });
       }
       if (i === maxLoop) {
         btn.innerHTML = '>';
+        btn.addEventListener('click', async () => {
+          if (currentPage === totalPages) {
+            return;
+          }
+          const title = inputTitle.value.trim();
+          try {
+            const array = await fetchInput(title, currentPage + 1);
+            console.log(array);
+            const arrayMovies = [];
+            array.results.forEach(async movie => {
+              arrayMovies.push(movie);
+            });
+            renderMovies(arrayMovies);
+            currentPage += 1;
+            pagination(totalPages, title, currentPage);
+            return currentPage;
+          } catch (error) {
+            console.error(error);
+          }
+        });
       }
       if (totalPages <= 9 && i >= 1 && i <= totalPages) {
         btn.innerHTML = i;
+
+        btn.addEventListener('click', async () => {
+          const title = inputTitle.value.trim();
+          try {
+            const array = await fetchInput(title, i);
+            console.log(array);
+            const arrayMovies = [];
+            array.results.forEach(async movie => {
+              arrayMovies.push(movie);
+            });
+            renderMovies(arrayMovies);
+          } catch (error) {
+            console.error(error);
+          }
+        });
       }
       if (totalPages > 9) {
-        if (i === 0) {
-          btn.innerHTML = '<';
-        }
-        if (i === maxLoop) {
-          btn.innerHTML = '>';
-        }
         if (i > 0 && i < maxLoop) {
           btn.innerHTML = i;
+          btn.addEventListener('click', async () => {
+            const title = inputTitle.value.trim();
+            try {
+              const array = await fetchInput(title, i);
+              console.log(array);
+              const arrayMovies = [];
+              array.results.forEach(async movie => {
+                arrayMovies.push(movie);
+              });
+              renderMovies(arrayMovies);
+              currentPage = i;
+              pagination(totalPages, title, currentPage);
+              return currentPage;
+            } catch (error) {
+              console.error(error);
+            }
+          });
           if (i === 1 || i === totalPages) {
             btn.innerHTML = i;
           } else if (currentPage >= 5 && currentPage > 0 && i === 2) {
@@ -97,11 +165,18 @@ const pagination = async (totalPages, title) => {
           } else if (currentPage <= totalPages - 4 && i === totalPages - 1) {
             btn.innerHTML = '...';
           } else {
-            if (i < currentPage - 2 || (i > currentPage + 2 && i >= 8)) {
+            if (
+              (i < currentPage - 2 && i <= totalPages - 7) ||
+              (i > currentPage + 2 && i >= 8)
+            ) {
               continue;
             }
           }
         }
+      }
+
+      if (btn.textContent === '...') {
+        btn.disabled = true;
       }
       paginationBtns.appendChild(btn);
     }
@@ -136,11 +211,7 @@ inputBtn.addEventListener('click', async event => {
     console.log(`Total pages: ${totalPages}`);
     console.log(`Total results: ${totalMovies}`);
 
-    pagination(totalPages, title);
-
-    // arrayMovies.forEach(async movie => {
-    //   console.log(movie);
-    // });
+    pagination(totalPages, title, currentPage);
   } catch (error) {
     console.error(error);
   }

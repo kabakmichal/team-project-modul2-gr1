@@ -2,6 +2,7 @@ import './sass/index.scss';
 
 import { fetchOnStart } from './js/fetch';
 import { movieSet } from './js/movieSet';
+import { topBtn } from './js/scrollToTop';
 
 fetchOnStart()
   .then(data => {
