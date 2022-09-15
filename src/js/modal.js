@@ -6,12 +6,10 @@
   };
 
   refs.openModalBtn.addEventListener('click', event => {
-    if (
-      event.target.offsetParent.className !== 'movie-card' 
-    )
-      return;
+    if (event.target.offsetParent.className !== 'movie-card') return;
     toggleModal();
-    console.log(event.target.id);
+    let movieId = event.target.offsetParent.dataset.id;
+    console.log(movieId);
   });
   refs.closeModalBtn.addEventListener('click', toggleModal);
 
@@ -19,4 +17,3 @@
     refs.modal.classList.toggle('is-hidden');
   }
 })();
-

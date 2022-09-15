@@ -7,7 +7,7 @@ let movieSet = async data => {
     .map(
       //trzeba dodać genre, ale mamy tylko genre_ids(cyfry)
       ({ id, poster_path, release_date, first_air_date, title, name, genre_ids }) => {
-        return `<div  class="movie-card" id="id${id}">
+        return `<div class="movie-card" data-id="${id}">
     <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" onerror="this.src = 'https://picsum.photos/id/237/274/398';alt="image of movie" loading="lazy" />
     <div class="movie-card__info">
         <p class="movie-card__title">
