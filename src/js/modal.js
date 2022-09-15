@@ -16,9 +16,3 @@
   }
 })();
 
-const divStorage = document.querySelector('.tryIt');
-console.log(divStorage);
-
-divStorage.addEventListener('click', event =>
-  console.log('klik ' + event.target.id)
-);
