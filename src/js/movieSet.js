@@ -11,15 +11,14 @@ let movieSet = async data => {
     <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" onerror="this.src = 'https://picsum.photos/id/237/274/398';alt="image of movie" loading="lazy" id='${id}' />
     <div class="movie-card__info" id='${id}' >
         <p class="movie-card__title" id='${id}' >
-            <span>${title || name}</span>
+          ${title || name}
         </p>
     <div class= "genreDate" id='${id}' >
         <p class="movie-card__genre" id='${id}'>
-            <span>${genre_ids.map(id => genreDict[id]).join(', ')}</span>
+            ${genre_ids.map(id => genreDict[id]).join(', ')}
         </p>
-        <p class="movie-card__year" id='${id}' >${
-          release_date || first_air_date}
-            <span></span>
+        <p class="movie-card__year" id='${id}' >
+        ${release_date || first_air_date}  
         </p>
     </div>
     </div>
