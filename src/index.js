@@ -15,7 +15,7 @@ fetchOnStart()
       if (event.target == document.querySelector(".gallery")) { return }
       let indexOfFilm;
       let movieInfo;
-      indexOfFilm = data.findIndex(film => film.id == event.target.id),
+      indexOfFilm = data.findIndex(film => film.id === event.target.id),
       movieInfo = data[indexOfFilm],
       console.log(movieInfo)
     }
