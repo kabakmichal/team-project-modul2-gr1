@@ -5,10 +5,20 @@
     modal: document.querySelector('[data-modal]'),
   };
 
-  refs.openModalBtn.addEventListener('click', toggleModal);
+  refs.openModalBtn.addEventListener('click', event => {
+    if (event.target.className !== 'movie-card__img') return;
+    toggleModal();
+  });
   refs.closeModalBtn.addEventListener('click', toggleModal);
 
   function toggleModal() {
     refs.modal.classList.toggle('is-hidden');
   }
 })();
+
+const divStorage = document.querySelector('.tryIt');
+console.log(divStorage);
+
+divStorage.addEventListener('click', event =>
+  console.log('klik ' + event.target.id)
+);
