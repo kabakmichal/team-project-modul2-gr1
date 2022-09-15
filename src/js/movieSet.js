@@ -13,9 +13,11 @@ let movieSet = async data => {
         <p class="movie-card__title" id='${id}' >
           ${title || name}
         </p>
-    <div class= "genreDate" id='${id}' >
-        <p class="movie-card__genre" id='${id}'>
-            ${genre_ids.map(id => genreDict[id]).join(', ')}
+
+    <div class= "genreDate">
+        <p class="movie-card__genre">
+            <span>${genre_ids.map(id => genreDict[id]).splice(0,2).join(', ')}</span>
+
         </p>
         <p class="movie-card__year" id='${id}' >
         ${release_date || first_air_date}  
