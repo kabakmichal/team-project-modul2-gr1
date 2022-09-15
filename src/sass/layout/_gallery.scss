@@ -69,3 +69,26 @@
     display:flex;
     flex-wrap: wrap;
 }
+
+.pagination_btns{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    justify-content: center;
+    gap: 20px;
+}
+.pagination_btns button{
+    padding: 10px;
+    background-color: $mainColor;
+    border: 1px solid $accentColor;
+    border-radius: 5px;
+    color: $accentColor;
+    
+}
+
+.pagination_btns button:hover,
+.pagination_btns button:focus{
+background-color: $accentColor;
+color: $mainColor;
+cursor: pointer;
+transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}

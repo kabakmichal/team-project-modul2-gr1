@@ -25,7 +25,6 @@ const fetchInput = async (title, page = 1) => {
     `https://api.themoviedb.org/3/search/movie?api_key=32592fc1c467ab313147df8555d6672d&query=${title}&page=${page}&include_adult=false`
   );
   const responseObject = await response.json();
-
   return responseObject;
 };
 
