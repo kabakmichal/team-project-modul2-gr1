@@ -35,6 +35,7 @@ let renderMovies = async data => {
   const markup = data
     .map(
       ({
+        id,
         poster_path,
         release_date,
         first_air_date,
@@ -42,7 +43,7 @@ let renderMovies = async data => {
         name,
         genre_ids,
       }) => {
-        return `<div class="movie-card">
+        return `<div id="id${id}" class="movie-card" >
   <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" onerror="this.src = 'https://picsum.photos/id/237/274/398';" alt="image of movie" loading="lazy" />
 
   <div class="movie-card__info">
