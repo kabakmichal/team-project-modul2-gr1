@@ -6,6 +6,7 @@ import { topBtn } from './js/scrollToTop';
 
 fetchOnStart()
   .then(data => {
+    
     return movieSet(data.results),
     data.results;
   })

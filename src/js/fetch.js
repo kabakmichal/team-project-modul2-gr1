@@ -1,6 +1,8 @@
 import { getGenre } from './getGenre';
 import { spinnerHidden } from './spinner';
 import { spinnerVisible } from './spinner';
+import Notiflix from 'notiflix';
+import debounce from 'lodash.debounce';
 
 const inputBtn = document.querySelector('.search-form__btn');
 const inputTitle = document.querySelector('.search-form__input');
@@ -133,6 +135,8 @@ const pagination = async (totalPages, title, currentPage) => {
             array.results.forEach(async movie => {
               arrayMovies.push(movie);
             });
+           
+           
             renderMovies(arrayMovies);
           } catch (error) {
             console.error(error);
@@ -184,9 +188,9 @@ const pagination = async (totalPages, title, currentPage) => {
   }
 };
 
-inputBtn.addEventListener('click', async event => {
+inputTitle.addEventListener('input', debounce (async event => {
   event.preventDefault();
-
+  
   const title = inputTitle.value.trim();
   console.log(title);
 
@@ -194,17 +198,26 @@ inputBtn.addEventListener('click', async event => {
     const array = await fetchInput(title);
     console.log(array);
     const arrayMovies = [];
+   
+   
     array.results.forEach(async movie => {
       arrayMovies.push(movie);
     });
 
     if (!array.total_results) {
       spinnerVisible();
+      movieSet();
     } else {
       spinnerHidden();
+      
     }
 
+   Notiflix.Loading.init({ svgColor: '#ff6b08' });
+   Notiflix.Loading.circle('Loading...');
+    
     renderMovies(arrayMovies);
+
+    Notiflix.Loading.remove(450);
 
     const totalPages = await array.total_pages;
     const totalMovies = await array.total_results;
@@ -216,6 +229,6 @@ inputBtn.addEventListener('click', async event => {
   } catch (error) {
     console.error(error);
   }
-});
+},900));
 
 export { fetchOnStart };
