@@ -15,7 +15,7 @@ let movieSet = async data => {
         </p>
     <div class= "genreDate">
         <p class="movie-card__genre">
-            <span>${genre_ids.map(id => genreDict[id]).join(', ')}</span>
+            <span>${genre_ids.map(id => genreDict[id]).splice(0,2).join(', ')}</span>
         </p>
         <p class="movie-card__year">${
           release_date || first_air_date}
