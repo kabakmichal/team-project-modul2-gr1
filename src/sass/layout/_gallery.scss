@@ -9,16 +9,18 @@
 
 .movie-card {
     
-   
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
     box-sizing: border-box;
     border-radius: 5px;
-    transform: 250ms cubic-bezier(0.4, 0, 0.2, 1)
+    box-shadow: 1px 4px 6px rgba(255, 107, 8, 0.174);
+    
 }
 .movie-card:hover,
 .movie-card:focus {
     cursor: pointer;
     scale :102%;
-    opacity :0.9;
+    opacity :0.93;
+    box-shadow: 2px 4px 8px rgba(255, 107, 8, 0.461);
 }
 
 .movie-card__img{
@@ -29,15 +31,15 @@
 @media screen and (min-width: 480px) and (max-width: 768px){
     .movie-card {
            
-            
-            flex-basis: calc(100% + 50px)/1;
+            flex-basis: calc((100% + 50px)/3);
+         
         }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px){
     .movie-card {
-             width: 294px;
-            
+             
+            flex-basis: calc((100% + 50px)/3);
         }
 }
 
