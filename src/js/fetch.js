@@ -1,6 +1,7 @@
 import { getGenre } from './getGenre';
 import { spinnerHidden } from './spinner';
 import { spinnerVisible } from './spinner';
+import { movieSet } from './movieSet';
 import Notiflix from 'notiflix';
 import debounce from 'lodash.debounce';
 
@@ -30,44 +31,6 @@ const fetchInput = async (title, page = 1) => {
 
 //w <p class="movie-card__year">${release_date || first_air_date} nie działa mi slice popatrzę jeszcze dlaczego
 
-let renderMovies = async data => {
-  const genreDict = await getGenre();
-  gallery.innerHTML = '';
-  const markup = data
-    .map(
-      ({
-        id,
-        poster_path,
-        release_date,
-        first_air_date,
-        title,
-        name,
-        genre_ids,
-      }) => {
-        return `<div class="movie-card" data-id="${id}">
-  <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" onerror="this.src = 'https://picsum.photos/id/237/274/398';" alt="image of movie" loading="lazy" />
-
-  <div class="movie-card__info">
-      <p class="movie-card__title">
-          <span>${title || name}</span>
-      </p>
-  <div class= "genreDate">
-      <p class="movie-card__genre">
-          <span>${genre_ids.map(id => genreDict[id]).slice(0,2).join(', ')}</span>
-      </p>
-      <p class="movie-card__year">${release_date || first_air_date} 
-          <span></span>
-      </p>
-  </div>
-  </div>
-</div>
-`;
-      }
-    )
-    .join('');
-  return gallery.insertAdjacentHTML('beforeend', markup);
-};
-
 let currentPage = 1;
 
 const pagination = async (totalPages, title, currentPage) => {
@@ -90,7 +53,7 @@ const pagination = async (totalPages, title, currentPage) => {
             array.results.forEach(async movie => {
               arrayMovies.push(movie);
             });
-            renderMovies(arrayMovies);
+            movieSet(arrayMovies);
             currentPage -= 1;
             pagination(totalPages, title, currentPage);
             return currentPage;
@@ -113,7 +76,7 @@ const pagination = async (totalPages, title, currentPage) => {
             array.results.forEach(async movie => {
               arrayMovies.push(movie);
             });
-            renderMovies(arrayMovies);
+            movieSet(arrayMovies);
             currentPage += 1;
             pagination(totalPages, title, currentPage);
             return currentPage;
@@ -136,7 +99,7 @@ const pagination = async (totalPages, title, currentPage) => {
             });
            
            
-            renderMovies(arrayMovies);
+            movieSet(arrayMovies);
           } catch (error) {
             console.error(error);
           }
@@ -154,7 +117,7 @@ const pagination = async (totalPages, title, currentPage) => {
               array.results.forEach(async movie => {
                 arrayMovies.push(movie);
               });
-              renderMovies(arrayMovies);
+              movieSet(arrayMovies);
               currentPage = i;
               pagination(totalPages, title, currentPage);
               return currentPage;
@@ -214,7 +177,7 @@ inputTitle.addEventListener('input', debounce (async event => {
    Notiflix.Loading.init({ svgColor: '#ff6b08' });
    Notiflix.Loading.circle('Loading...');
     
-    renderMovies(arrayMovies);
+    movieSet(arrayMovies);
 
     Notiflix.Loading.remove(450);
 
