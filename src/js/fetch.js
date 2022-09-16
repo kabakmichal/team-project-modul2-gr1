@@ -152,7 +152,7 @@ const pagination = async (totalPages, title, currentPage) => {
 
 inputTitle.addEventListener('input', debounce (async event => {
   event.preventDefault();
-  
+  if (inputTitle.value=="") {return location.reload()}
   const title = inputTitle.value.trim();
   console.log(title);
 
@@ -161,7 +161,7 @@ inputTitle.addEventListener('input', debounce (async event => {
     console.log(array);
     const arrayMovies = [];
    
-   
+     
     array.results.forEach(async movie => {
       arrayMovies.push(movie);
     });
@@ -183,7 +183,7 @@ inputTitle.addEventListener('input', debounce (async event => {
 
     const totalPages = await array.total_pages;
     const totalMovies = await array.total_results;
-
+  
     console.log(`Total pages: ${totalPages}`);
     console.log(`Total results: ${totalMovies}`);
 
