@@ -36,8 +36,6 @@ const fetchOneTV = key => {
       movie = await fetchOneMovie(movieId);
     if (event.target.offsetParent.dataset.type === 'tv')
       movie = await fetchOneTV(movieId);
-
-    console.log(movie);
     modalSet(movie);
   });
   refs.closeModalBtn.addEventListener('click', toggleModal);

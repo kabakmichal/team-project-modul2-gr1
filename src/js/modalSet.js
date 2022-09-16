@@ -18,13 +18,11 @@ let modalSet = async movie => {
     popularity,
     overview,
   } = movie;
-  console.log(genres);
-
   let markup = `<div class="movie-box-separation">
                 <div class="movie-box-photo"><img class="movie__image" src="#" alt="Poster of: ${imgAlt}"
                         loading="lazy"></div>
                 <div class="movie-box-info">
-                    <h2 class="modal-movie-title">${title}</h2>
+                    <h2 class="modal-movie-title">${title || name}</h2>
                     <ul class="modal-movie-details">
                         <li class="modal-movie-details-li"><span class=" details__label">Vote / Votes</span><span
                                 class="details__rating">${Number(
