@@ -3,6 +3,7 @@ const gallery = document.querySelector('.gallery');
 
 let movieSet = async data => {
   const genreDict = await getGenre();
+  gallery.innerHTML = "";
   const markup = data
     .map(
       //trzeba dodać genre, ale mamy tylko genre_ids(cyfry)
