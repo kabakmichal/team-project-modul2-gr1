@@ -1,4 +1,4 @@
-import { modalSet } from "./modalSet";
+import { modalSet } from './modalSet';
 
 const fetchOneMovie = key => {
   return fetch(
@@ -24,19 +24,19 @@ const fetchOneTV = key => {
     modal: document.querySelector('[data-modal]'),
   };
 
-// Zmienna movie przechowuje obiekt z konkretnym filmem !!!!!!!
+  // Zmienna movie przechowuje obiekt z konkretnym filmem !!!!!!!
 
   refs.openModalBtn.addEventListener('click', async event => {
     if (event.target.offsetParent.className !== 'movie-card') return;
     toggleModal();
-    movieId = event.target.offsetParent.dataset.id;
+    let movieId = event.target.offsetParent.dataset.id;
     let movie;
-   // console.log(event.target.offsetParent.dataset.type);
-    if(event.target.offsetParent.dataset.type === "movie")
-      movie =  await fetchOneMovie(movieId);
+    // console.log(event.target.offsetParent.dataset.type);
+    if (event.target.offsetParent.dataset.type === 'movie')
+      movie = await fetchOneMovie(movieId);
     if (event.target.offsetParent.dataset.type === 'tv')
-      movie =  await fetchOneTV(movieId);
-    
+      movie = await fetchOneTV(movieId);
+
     console.log(movie);
     modalSet(movie);
   });
