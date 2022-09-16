@@ -1,27 +1,47 @@
+const movieModalBox = document.querySelector('.movie-box');
 
+let modalSet = async movie => {
+  movieModalBox.innerHTML = '';
+  console.log(movie);
+  const {
+    id,
+    imgAlt,
+    media_type,
+    poster_path,
+    release_date,
+    first_air_date,
+    title,
+    name,
+    genres,
+    vote_average,
+    vote_count,
+    popularity,
+    overview,
+  } = movie;
+  console.log(genres);
 
-
-
-
-{/* <div class="movie-box-separation">
+  let markup = `<div class="movie-box-separation">
                 <div class="movie-box-photo"><img class="movie__image" src="#" alt="Poster of: ${imgAlt}"
                         loading="lazy"></div>
                 <div class="movie-box-info">
-                    <h2 class="modal-movie-title">Movie title</h2>
+                    <h2 class="modal-movie-title">${title}</h2>
                     <ul class="modal-movie-details">
                         <li class="modal-movie-details-li"><span class=" details__label">Vote / Votes</span><span
                                 class="details__rating">${Number(
-                                vote_average).toFixed(1)}</span> /
+                                  vote_average
+                                ).toFixed(1)}</span> /
                             ${vote_count}</span></li>
                         </li>
                         <li class="modal-movie-details-li"><span class=" details__label">Popularity</span><span
                                 class="details__value">${Number(
-                                popularity
+                                  popularity
                                 ).toFixed(0)}</span></li>
                         <li class="modal-movie-details-li"><span class=" details__label">Original Title</span><span
                                 class="details__value details__title">${title}</span></li>
                         <li class="modal-movie-details-li"><span class=" details__label">Genre</span><span
-                                class="details__value">${genresNames}</span></li>
+                                class="details__value">${genres
+                                  .map(genre => genre.name)
+                                  .join(', ')}</span></li>
                         </li>
                     </ul>
                     <h3 class="movie__label">About</h3>
@@ -33,4 +53,8 @@
                             to queue</button>
                     </div>
                 </div>
-            </div> */}
+            </div>`;
+
+  return movieModalBox.insertAdjacentHTML('beforeend', markup);
+};
+export { modalSet };
