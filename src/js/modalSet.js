@@ -1,0 +1,36 @@
+
+
+
+
+
+{/* <div class="movie-box-separation">
+                <div class="movie-box-photo"><img class="movie__image" src="#" alt="Poster of: ${imgAlt}"
+                        loading="lazy"></div>
+                <div class="movie-box-info">
+                    <h2 class="modal-movie-title">Movie title</h2>
+                    <ul class="modal-movie-details">
+                        <li class="modal-movie-details-li"><span class=" details__label">Vote / Votes</span><span
+                                class="details__rating">${Number(
+                                vote_average).toFixed(1)}</span> /
+                            ${vote_count}</span></li>
+                        </li>
+                        <li class="modal-movie-details-li"><span class=" details__label">Popularity</span><span
+                                class="details__value">${Number(
+                                popularity
+                                ).toFixed(0)}</span></li>
+                        <li class="modal-movie-details-li"><span class=" details__label">Original Title</span><span
+                                class="details__value details__title">${title}</span></li>
+                        <li class="modal-movie-details-li"><span class=" details__label">Genre</span><span
+                                class="details__value">${genresNames}</span></li>
+                        </li>
+                    </ul>
+                    <h3 class="movie__label">About</h3>
+                    <p class="movie__about">${overview}</p>
+                    <div class="modal__btns--wrapper">
+                        <button type="button" class="modal__btns modal__btns--watch" data-name="watched"
+                            data-id=${id}>Add to watched</button>
+                        <button type="button" class="modal__btns modal__btns--queue" data-name="queue" data-id=${id}>Add
+                            to queue</button>
+                    </div>
+                </div>
+            </div> */}
