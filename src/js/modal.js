@@ -1,6 +1,16 @@
+import { modalSet } from "./modalSet";
+
 const fetchOneMovie = key => {
   return fetch(
     `https://api.themoviedb.org/3/movie/${key}?api_key=32592fc1c467ab313147df8555d6672d`
+  ).then(response => {
+    if (!response.ok) throw new Error(response.status);
+    return response.json();
+  });
+};
+const fetchOneTV = key => {
+  return fetch(
+    `https://api.themoviedb.org/3/tv/${key}?api_key=32592fc1c467ab313147df8555d6672d`
   ).then(response => {
     if (!response.ok) throw new Error(response.status);
     return response.json();
@@ -14,13 +24,21 @@ const fetchOneMovie = key => {
     modal: document.querySelector('[data-modal]'),
   };
 
+// Zmienna movie przechowuje obiekt z konkretnym filmem !!!!!!!
+
   refs.openModalBtn.addEventListener('click', async event => {
     if (event.target.offsetParent.className !== 'movie-card') return;
     toggleModal();
-    let movieId = event.target.offsetParent.dataset.id;
-    console.log(movieId);
-    let movie = fetchOneMovie(movieId);
+    movieId = event.target.offsetParent.dataset.id;
+    let movie;
+   // console.log(event.target.offsetParent.dataset.type);
+    if(event.target.offsetParent.dataset.type === "movie")
+      movie =  await fetchOneMovie(movieId);
+    if (event.target.offsetParent.dataset.type === 'tv')
+      movie =  await fetchOneTV(movieId);
+    
     console.log(movie);
+    modalSet(movie);
   });
   refs.closeModalBtn.addEventListener('click', toggleModal);
 
