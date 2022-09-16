@@ -34,6 +34,11 @@
             flex-basis: calc((100% + 50px)/3);
          
         }
+    .pagination_btns button {
+        width: 30px;
+        height: 30px;
+        
+                }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px){
@@ -41,6 +46,10 @@
              
             flex-basis: calc((100% + 50px)/3);
         }
+    .pagination_btns button {
+        width: 40px;
+        height: 40px;}
+        
 }
 
 @media screen and (min-width: 1024px) {
@@ -48,6 +57,11 @@
             
             flex-basis: calc((100% + 50px)/4);
         }
+    .pagination_btns button {
+        width: 50px;
+        height: 50px;
+        
+                }
 }
 
 .movie-card__title{
@@ -68,4 +82,26 @@
 .genreDate{
     display:flex;
     flex-wrap: wrap;
+}
+
+.pagination_btns{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    justify-content: center;
+    gap: 20px;
+}
+.pagination_btns button{
+    background-color: $mainColor;
+    border: none;
+    border-radius: 15px;
+    
+    
+}
+
+.pagination_btns button:hover,
+.pagination_btns button:focus{
+background-color: $accentColor;
+color: $mainColor;
+cursor: pointer;
+transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
