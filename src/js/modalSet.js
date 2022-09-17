@@ -52,4 +52,4 @@ let modalSet = async movie => {
 
   return movieModalBox.insertAdjacentHTML('beforeend', markup);
 };
-export { modalSet };
+export { modalSet, movieModalBox};

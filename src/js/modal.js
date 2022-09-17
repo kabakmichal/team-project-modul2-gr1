@@ -1,4 +1,4 @@
-import { modalSet } from './modalSet';
+import { modalSet, movieModalBox } from './modalSet';
 
 const fetchOneMovie = key => {
   return fetch(
@@ -31,14 +31,17 @@ const fetchOneTV = key => {
     toggleModal();
     let movieId = event.target.offsetParent.dataset.id;
     let movie;
-    // console.log(event.target.offsetParent.dataset.type);
-    // if (event.target.offsetParent.dataset.type === 'movie')
-    movie = await fetchOneMovie(movieId);
-    // if (event.target.offsetParent.dataset.type === 'tv')
-    //   movie = await fetchOneTV(movieId);
+    console.log(event.target.offsetParent.dataset.type);
+    if (event.target.offsetParent.dataset.type === 'movie')
+      movie = await fetchOneMovie(movieId);
+    if (event.target.offsetParent.dataset.type === 'tv')
+      movie = await fetchOneTV(movieId);
     modalSet(movie);
   });
-  refs.closeModalBtn.addEventListener('click', toggleModal);
+  refs.closeModalBtn.addEventListener('click', () => {
+    toggleModal();
+    movieModalBox.innerHTML = '';
+  });
 
   function toggleModal() {
     refs.modal.classList.toggle('is-hidden');
