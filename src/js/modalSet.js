@@ -1,4 +1,4 @@
-const movieModalBox = document.querySelector('.movie-box');
+const movieModalBox = document.querySelector('.modal__movie-box');
 
 let modalSet = async movie => {
   movieModalBox.innerHTML = '';
@@ -18,33 +18,35 @@ let modalSet = async movie => {
     popularity,
     overview,
   } = movie;
-  let markup = `<div class="movie-box-separation">
-                <div class="movie-box-photo"><img class="movie__image" src="https://image.tmdb.org/t/p/w300${poster_path}"  alt="Poster of: ${imgAlt}"
+  let markup = `<div class="modal__movie-box-separation">
+                <div class="modal__movie-box-photo"><img class="modal__movie-image" src="https://image.tmdb.org/t/p/w300${poster_path}"  alt="Poster of: ${imgAlt}"
                         loading="lazy"></div>
-                <div class="movie-box-info">
-                    <h2 class="modal-movie-title">${title || name}</h2>
-                    <ul class="modal-movie-details">
-                        <li class="modal-movie-details-li"><span class=" details__label">Vote/Votes</span><span
-                                class="details__rating">${Number(vote_average).toFixed(1)}/${vote_count}</span></span></li>
+                <div class="modal__movie-box-info">
+                    <h2 class="modal__movie-box-title">${title || name}</h2>
+                    <ul class="modal__movie-box-details">
+                        <li class="modal__movie-details-li"><span class="modal__movie-details-label">Vote/Votes</span><span
+                                class="modal__movie-details__rating">${Number(
+                                  vote_average
+                                ).toFixed(1)}/${vote_count}</span></span></li>
                         </li>
-                        <li class="modal-movie-details-li"><span class=" details__label">Popularity</span><span
-                                class="details__value">${Number(
+                        <li class="modal__movie-details-li"><span class="modal__movie-details-label">Popularity</span><span
+                                class="modal__movie-details-value">${Number(
                                   popularity
                                 ).toFixed(0)}</span></li>
-                        <li class="modal-movie-details-li"><span class=" details__label">Original Title</span><span
-                                class="details__value details__title">${title}</span></li>
-                        <li class="modal-movie-details-li"><span class=" details__label">Genre</span><span
-                                class="details__value">${genres
+                        <li class="modal__movie-details-li"><span class=" modal__movie-details-label">Original Title</span><span
+                                class="modal__movie-details-value modal__movie-details-title">${title}</span></li>
+                        <li class="modal__movie-details-li"><span class=" modal__movie-details-label">Genre</span><span
+                                class="modal__movie-details-value">${genres
                                   .map(genre => genre.name)
                                   .join(', ')}</span></li>
                         </li>
                     </ul>
-                    <h3 class="movie__label">About</h3>
-                    <p class="movie__about">${overview}</p>
-                    <div class="modal__btns--wrapper">
-                        <button type="button" class="modal__btns modal__btns--watch" data-name="watched"
+                    <h3 class="modal__movie-about-label">About</h3>
+                    <p class="modal__movie-about-text">${overview}</p>
+                    <div class="modal__movie-btns--wrapper">
+                        <button type="button" class="modal__movie-btns modal__movie-btns--watch" data-name="watched"
                             data-id=${id}>Add to watched</button>
-                        <button type="button" class="modal__btns modal__btns--queue" data-name="queue" data-id=${id}>Add
+                        <button type="button" class="modal__movie-btns modal__movie-btns-queue" data-name="queue" data-id=${id}>Add
                             to queue</button>
                     </div>
                 </div>
@@ -52,4 +54,4 @@ let modalSet = async movie => {
 
   return movieModalBox.insertAdjacentHTML('beforeend', markup);
 };
-export { modalSet, movieModalBox};
+export { modalSet, movieModalBox };
