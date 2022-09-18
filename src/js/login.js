@@ -6,8 +6,8 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const signIn = document.querySelector(".sign-in");
 const signUp = document.querySelector(".sign-up");
-const email = document.querySelector(".email");
-const password = document.querySelector(".password")
+const email = document.querySelector(".email").value;
+const password = document.querySelector(".password");
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Your web app's Firebase configuration
@@ -23,12 +23,16 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 //Initialize Authentication
 const auth = getAuth(app);
 
 // SIGN UP USERS
-createUserWithEmailAndPassword(auth, email, password)
+
+
+signUp.addEventListener("click", (e) => {
+  e.preventDefault(),
+console.log(email,password.value)
+createUserWithEmailAndPassword(auth, email, password.value)
   .then((userCredential) => {
     // Signed in 
       console.log(userCredential)
@@ -39,9 +43,7 @@ createUserWithEmailAndPassword(auth, email, password)
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
+    console.log(errorCode, errorMessage)
     // ..
-  });
-
-signUp.addEventListener("click", createUserWithEmailAndPassword(auth, email.value, password.value))
-
+  });})
 
