@@ -18,8 +18,12 @@ let modalSet = async movie => {
     popularity,
     overview,
   } = movie;
+  let imgSrc = `https://image.tmdb.org/t/p/w300${poster_path}`;
+  if (poster_path === null) {
+    imgSrc = new URL('https://picsum.photos/id/237/274/398');
+  }
   let markup = `<div class="modal__movie-box-separation">
-                <div class="modal__movie-box-photo"><img class="modal__movie-image" src="https://image.tmdb.org/t/p/w300${poster_path}"  alt="Poster of: ${imgAlt}"
+                <div class="modal__movie-box-photo"><img class="modal__movie-image" src="${imgSrc}"  alt="Poster of: ${imgAlt}"
                         loading="lazy"></div>
                 <div class="modal__movie-box-info">
                     <h2 class="modal__movie-box-title">${title || name}</h2>
