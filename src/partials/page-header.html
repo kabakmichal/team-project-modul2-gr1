@@ -3,8 +3,11 @@
     <div class="header-wrapper">
       <a class="page-header__logo link" href="./index.html">
         <svg width="24" height="24">
-          <use href="./svg/sprite.svg#icon-logo"></use></svg></a>
-          <a class="link" href="./index.html"><span class="logo__label"> Filmoteka</span></a>
+          <use href="./svg/sprite.svg#icon-logo"></use></svg
+      ></a>
+      <a class="link" href="./index.html"
+        ><span class="logo__label"> Filmoteka</span></a
+      >
       <nav class="navigation">
         <ul class="navigation__list list">
           <li class="navigation__item">
@@ -19,11 +22,18 @@
               >MY LIBRARY</a
             >
           </li>
+          <li class="navigation__item">
+            <button type="submit" login-open>Sign in</button>
+          </li>
         </ul>
       </nav>
     </div>
     <div class="search-form__wrapper">
-      <form class="search-form" id="search-form" onkeypress="return event.keyCode != 13;">
+      <form
+        class="search-form"
+        id="search-form"
+        onkeypress="return event.keyCode != 13;"
+      >
         <input
           class="search-form__input"
           type="text"
@@ -37,9 +47,11 @@
           </svg>
         </button>
       </form>
-      <p class="input-notification">Search result not successful. Enter the correct movie name.</p>
+      <p class="input-notification">
+        Search result not successful. Enter the correct movie name.
+      </p>
     </div>
   </div>
 </header>
 
-<script type='module' src='./js/fetch.js'></script>
+<script type="module" src="./js/fetch.js"></script>
