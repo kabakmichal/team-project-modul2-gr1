@@ -1,4 +1,5 @@
 
+
 export default
 (() => {
   const refs = {
@@ -14,4 +15,5 @@ export default
     refs.modal.classList.toggle('is-hidden');
   }
     })();
+
 
