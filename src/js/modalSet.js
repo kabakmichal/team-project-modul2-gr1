@@ -28,10 +28,9 @@ let modalSet = async movie => {
                 <div class="modal__movie-box-info">
                     <h2 class="modal__movie-box-title">${title || name}</h2>
                     <ul class="modal__movie-box-details">
-                        <li class="modal__movie-details-li"><span class="modal__movie-details-label">Vote/Votes</span><span
-                                class="modal__movie-details__rating">${Number(
+                        <li class="modal__movie-details-li"><span class="modal__movie-details-label">Vote /Votes </span><span><span class="modal__movie-details-vote">${Number(
                                   vote_average
-                                ).toFixed(1)}/${vote_count}</span></span></li>
+                                ).toFixed(1)}</span> / ${vote_count}</span></span></li>
                         </li>
                         <li class="modal__movie-details-li"><span class="modal__movie-details-label">Popularity</span><span
                                 class="modal__movie-details-value">${Number(
