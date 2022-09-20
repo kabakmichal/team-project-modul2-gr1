@@ -37,7 +37,7 @@ let modalSet = async movie => {
                                   popularity
                                 ).toFixed(0)}</span></li>
                         <li class="modal__movie-details-li"><span class=" modal__movie-details-label">Original Title</span><span
-                                class="modal__movie-details-value modal__movie-details-title">${title}</span></li>
+                                class="modal__movie-details-value modal__movie-details-title">${title || name }</span></li>
                         <li class="modal__movie-details-li"><span class=" modal__movie-details-label">Genre</span><span
                                 class="modal__movie-details-value">${genres
                                   .map(genre => genre.name)
