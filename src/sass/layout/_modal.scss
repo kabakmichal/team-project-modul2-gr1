@@ -6,7 +6,7 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1),
-  visibility 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    visibility 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .is-hidden {
@@ -16,13 +16,13 @@
 }
 
 .modal__movie {
-  background-color: white;
+  background-color: $mainColor;
   max-width: 882px;
   width: 100%;
   border-radius: 20px;
   margin: auto;
   margin-top: 20px;
- 
+
   &-close-btn {
     position: relative;
     top: 10px;
@@ -33,18 +33,18 @@
     background-color: transparent;
     cursor: pointer;
   }
+
   &-btns {
     width: 136px;
     height: 44px;
-    color: #000;
     text-transform: uppercase;
-    background-color: #fff;
-    border: 1px solid #ff6b08;
+    background-color: $mainColor;
+    border: 1px solid $accentColor;
     border-radius: 5px;
     font-weight: 500;
     font-size: 12px;
-    box-shadow: 0px 2px 8px #ff6b08;
-    transition: all .5s cubic-bezier(.4, 0, .2, 1);
+    box-shadow: 0px 2px 8px $accentColor;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 
     &:not(:last-child) {
       margin-right: 15px;
@@ -52,9 +52,9 @@
 
     &:hover,
     &:active {
-      background: #ff6b08;
-      border-color: #ff6b08;
-      color: #ffffff;
+      background: $accentColor;
+      border-color: $accentColor;
+      color: $mainColor;
     }
 
     &--wrapper {
@@ -77,10 +77,12 @@
     display: flex;
     padding: 0 30px;
   }
+
   &-photo {
     width: 100%;
     margin-right: 30px;
   }
+
   &-title {
     text-transform: uppercase;
     margin-bottom: 20px;
@@ -111,12 +113,14 @@
     border-radius: 20px;
     box-shadow: 0px 0px 20px 3px;
   }
+
   &-details {
     &-vote {
       padding: 0 5px;
-      background-color: #ff6b08;
+      background-color: $accentColor;
       border-radius: 5px;
     }
+
     &-li {
       grid-template-columns: 90px 1fr;
       gap: 18px;
@@ -125,13 +129,14 @@
     }
 
     &-label {
-      color: #8c8c8c;
+      color: $labelColor;
       font-size: 12px;
       font-weight: 500;
       line-height: 1.333;
       display: block;
     }
   }
+
   &-about {
     &-label {
       display: flex;
@@ -149,6 +154,7 @@
     }
   }
 }
+
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .modal__movie {
     max-width: 882px;
@@ -160,6 +166,7 @@
     }
   }
 }
+
 @media screen and (min-width: 480px) and (max-width: 768px) {
   .modal__movie {
     max-width: 618px;
@@ -170,6 +177,7 @@
       max-width: 264px;
       width: 100%;
     }
+
     &-close-btn {
       left: 94%;
       top: 5px;
@@ -181,22 +189,27 @@
     max-width: 280px;
     width: 100%;
     margin-top: 20px;
+
     &-box {
       margin: auto 20px;
+
       &-photo {
         max-width: 240px;
         width: 100%;
       }
+
       &-separation {
         display: block;
         padding: 0px;
       }
+
       &-info {
         padding-left: 0px;
         max-width: 240px;
       }
     }
   }
+
   .modal__movie-close-btn {
     left: 89%;
     top: 5px;
