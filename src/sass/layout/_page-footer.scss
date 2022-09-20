@@ -20,7 +20,14 @@
   text-decoration: underline;
 }
 .footer__text {
+  color:$inputColor;
   text-decoration: underline;
+  transition: all 500ms;
+
+  &:hover{
+    transform: scale(1.5);
+    color: $accentColor;
+  }
 }
 
 .top-btn {
