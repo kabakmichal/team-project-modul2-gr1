@@ -10,6 +10,11 @@ const pagination = async (totalPages, title, currentPage) => {
   if (totalPages >= 1) {
     for (let i = 0; i <= maxLoop; i++) {
       let btn = document.createElement('button');
+
+      if (currentPage == i) {
+        btn.classList.add("active");
+      }
+      
       if (i === 0) {
         btn.innerHTML = '<';
         btn.addEventListener('click', async () => {
