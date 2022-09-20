@@ -1,28 +1,76 @@
+.log-in {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.166;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: $mainColor;
+  background-color: $accentColor;
+  border-radius: 5px;
+  width: 65px;
+  justify-content: center;
+  padding: 5px;
+  cursor: pointer;
+  // transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  border-color: transparent;
 
-.login-wrapper{
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
+  // &:hover {
+  //     background-color: transparent;
+  //     color: $accentColor;
+  //     border: 1px solid $accentColor;
+
+  // }
+}
+.sign-in,
+.sign-up {
+  border-color: transparent;
+  transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    background-color: transparent;
+    color: $accentColor;
+    border-color: $accentColor;
+  }
+}
+
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
 }
 .form__btn {
-    margin: 50px 25px 10px;
-    display: inline-block;
-  
+  margin: 50px 25px 10px;
+  display: inline-block;
+}
+.modal-login__btn {
+  top: -10px;
+  left: 90%;
+}
+
+.modal-login__icon {
+  top: 3px;
+  position: relative;
 }
 
 .modal-login {
-    background-color: $footerBg;
-    height: auto;
-    width: 280px;
-    padding-top: 25px;
-
+  position: absolute;
+  background-color: $footerBg;
+  height: 400px;
+  width: 280px;
+  padding: 25px 20px 30px;
+  border-radius: 6px;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%) scale(1);
+  transition: all 500ms cubic-bezier(0.38, 0.53, 0.8, 0.71),
+    opacity 500ms cubic-bezier(0.38, 0.53, 0.8, 0.71);
+  overflow: hidden;
 }
 
 .login-form {
-    margin-bottom: 25px;
-    margin-top: 50px;
-    width: 250px;
-    font-size: 12px;
-    color: black;
-   
+  margin-bottom: 25px;
+  margin-top: 50px;
+  width: 250px;
+  font-size: 12px;
+  color: black;
 }
