@@ -62,7 +62,7 @@ signInWithEmailAndPassword(auth, email.value, password.value)
     user = userCredential.user,
     console.log(user),
     document.querySelector('[login-modal]').classList.toggle('is-hidden');
-    Notify.success(`Hi,${user.email}, you are sign in!`);
+    Notify.success(`Hi, ${user.email.split('@')[0]}, you are sign in!`);
   
   })
   .catch((error) => {
@@ -78,11 +78,11 @@ logOut.addEventListener("click", (e) => {
     console.log(e.target)
     signOut(auth)
       .then(() => {
-        login.classList.toggle('is-hidden'),
-          logOut.classList.toggle('is-hidden'),
-          Notify.info(`Goodbye,${user.email}, you are logged out!`);
+        return login.classList.toggle('is-hidden'),
+        logOut.classList.toggle('is-hidden'),
+        Notify.info(`Goodbye, ${user.email.split('@')[0]}, you are logged out!`);
       }).catch((error) => {
-        // An error happened.
+        Notify.failure(error)
       })
 })
 
