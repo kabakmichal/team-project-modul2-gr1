@@ -10,6 +10,7 @@ const email = document.querySelector(".email");
 const password = document.querySelector(".password");
 const login = document.querySelector('.log-in');
 const logOut = document.querySelector('.log-out');
+const library = document.querySelector('.library')
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Your web app's Firebase configuration
@@ -59,10 +60,10 @@ signInWithEmailAndPassword(auth, email.value, password.value)
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    login.classList.toggle('log-out'),
-    login.innerHTML ="Log Out"  
-    login.classList.toggle('log-in'),
+    login.classList.toggle('is-hidden'),
+    logOut.classList.toggle('is-hidden'),
     console.log(user),
+    library.classList.toggle('is-hidden'),
     document.querySelector('[login-modal]').classList.toggle('is-hidden');
     
   })
@@ -79,11 +80,10 @@ logOut.addEventListener("click", (e) => {
     console.log(e.target)
     signOut(auth)
       .then(() => {
-        logOut.classList.toggle('log-out'),
-        logOut.classList.toggle('log-in'),
-        logOut.innerHTML ="Sign In"
-        
-        console.log('logged out')
+      login.classList.toggle('is-hidden'),
+      logOut.classList.toggle('is-hidden'),
+      library.classList.toggle('is-hidden'),
+      console.log('logged out')
       }).catch((error) => {
         // An error happened.
       })
