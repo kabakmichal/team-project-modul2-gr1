@@ -34,14 +34,11 @@ const auth = getAuth(app);
 
 signUp.addEventListener("click", (e) => {
   e.preventDefault(),
-console.log(email.value,password.value)
 createUserWithEmailAndPassword(auth, email.value, password.value)
   .then((userCredential) => {
     // Signed in 
-      console.log(userCredential)
     const user = userCredential.user;
-    // ...
-    console.log(user)
+    
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -55,12 +52,11 @@ createUserWithEmailAndPassword(auth, email.value, password.value)
 
 signIn.addEventListener("click", (e) => {
   e.preventDefault(),
-console.log(email.value,password.value)
+
 signInWithEmailAndPassword(auth, email.value, password.value)
   .then((userCredential) => {
     // Signed in 
     user = userCredential.user,
-    console.log(user),
     document.querySelector('[login-modal]').classList.toggle('is-hidden');
     Notify.success(`Hi, ${user.email.split('@')[0]}, you are sign in!`);
   
@@ -75,22 +71,20 @@ signInWithEmailAndPassword(auth, email.value, password.value)
 //LOG OUT
 logOut.addEventListener("click", (e) => {
   e.preventDefault(),
-    console.log(e.target)
     signOut(auth)
       .then(() => {
         return login.classList.toggle('is-hidden'),
         logOut.classList.toggle('is-hidden'),
-        Notify.info(`Goodbye, ${user.email.split('@')[0]}, you are logged out!`);
+        Notify.info(`Goodbye, you are logged out!`);
       }).catch((error) => {
-        Notify.failure(error)
+        Notify.info(`Goodbye, you are logged out!`)
       })
 })
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
     login.classList.toggle('is-hidden'),
-    logOut.classList.toggle('is-hidden'),
-    console.log(user)
+    logOut.classList.toggle('is-hidden')
     // https://firebase.google.com/docs/reference/js/firebase.User
     const uid = user.uid;
     // ...
