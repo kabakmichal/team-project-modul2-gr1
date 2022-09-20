@@ -2,7 +2,7 @@
 export default
 (() => {
   const refs = {
-    openModalBtn: document.querySelector('[login-open]'),
+    openModalBtn: document.querySelector('.log-in'),
     closeModalBtn: document.querySelector('[login-close]'),
     modal: document.querySelector('[login-modal]'),
   };
