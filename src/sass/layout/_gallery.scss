@@ -1,112 +1,101 @@
-.gallery{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    gap:20px;
-    padding-top: 20px;
-    
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 20px;
+  padding-top: 20px;
 }
 
 .movie-card {
-    
-    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    box-sizing: border-box;
-    border-radius: 5px;
-    box-shadow: 1px 4px 6px rgba(255, 107, 8, 0.174);
-    
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: 1px 4px 6px rgba(255, 107, 8, 0.174);
 }
-.movie-card:hover,
-.movie-card:focus {
-    cursor: pointer;
-    scale :102%;
-    opacity :0.93;
-    box-shadow: 2px 4px 8px rgba(255, 107, 8, 0.461);
+.movie-card:hover {
+  cursor: pointer;
+  scale: 102%;
+  opacity: 0.93;
+  box-shadow: 2px 4px 8px rgba(255, 107, 8, 0.461);
 }
 
-.movie-card__img{
-    height: 398px;
-    width: 274px;
+.movie-card__img {
+  border-radius: 5px;
+  height: 398px;
+  width: 274px;
 }
 
-@media screen and (min-width: 480px) and (max-width: 768px){
-    .movie-card {
-           
-            flex-basis: calc((100% + 50px)/3);
-         
-        }
-    .pagination_btns button {
-        width: 30px;
-        height: 30px;
-        
-                }
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  .movie-card {
+    flex-basis: calc((100% + 50px) / 3);
+  }
+  .pagination_btns button {
+    width: 30px;
+    height: 30px;
+  }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px){
-    .movie-card {
-             
-            flex-basis: calc((100% + 50px)/3);
-        }
-    .pagination_btns button {
-        width: 40px;
-        height: 40px;}
-        
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .movie-card {
+    flex-basis: calc((100% + 50px) / 3);
+  }
+  .pagination_btns button {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 @media screen and (min-width: 1024px) {
-    .movie-card {
-            
-            flex-basis: calc((100% + 50px)/4);
-        }
-    .pagination_btns button {
-        width: 50px;
-        height: 50px;
-        
-                }
+  .movie-card {
+    flex-basis: calc((100% + 50px) / 4);
+  }
+  .pagination_btns button {
+    width: 50px;
+    height: 50px;
+  }
 }
 
-.movie-card__title{
-    font-weight: 500;
-    color: var(--second-color);
-    font-size: 12px;
-    line-height: 1,33;
-    margin: 10px 0 5px 5px;
+.movie-card__title {
+  font-weight: 500;
+  color: var(--second-color);
+  font-size: 12px;
+  line-height: 1, 33;
+  margin: 10px 0 5px 5px;
 }
 .movie-card__genre,
 .movie-card__year {
-    color: var(--third-color);
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1,33;
-    margin: 0px 0 5px 5px;
+  color: var(--third-color);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1, 33;
+  margin: 0px 0 5px 5px;
 }
-.genreDate{
-    display:flex;
-    flex-wrap: wrap;
+.genreDate {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.pagination_btns{
-    padding-top: 20px;
-    padding-bottom: 20px;
-    justify-content: center;
-    gap: 20px;
+.pagination_btns {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  justify-content: center;
+  gap: 20px;
 }
-.pagination_btns button{
-    background-color: $mainColor;
-    border: none;
-    border-radius: 15px;
-
-    &.active {
-            background-color: $accentColor;
-        }
-    
+.pagination_btns button {
+  background-color: $mainColor;
+  border: none;
+  border-radius: 15px;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &.active {
+    background-color: $accentColor;
+    color: $mainColor;
+  }
 }
 
 .pagination_btns button:hover,
-.pagination_btns button:focus{
-background-color: $accentColor;
-color: $mainColor;
-cursor: pointer;
-transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+.pagination_btns button:focus {
+  background-color: $accentColor;
+  color: $mainColor;
+  cursor: pointer;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-
