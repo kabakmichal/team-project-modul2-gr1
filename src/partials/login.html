@@ -1,23 +1,20 @@
 <div class="backdrop is-hidden" login-modal>
-  <div class="modal">
-    <button type="button" class="close__btn" login-close>
+  <div class="modal modal-team modal-login">
+    <button type="button" class="close__btn modal__movie-close-btn modal-team__btn" login-close>
       <svg width="18px" height="18px">
         <use href="./svg/sprite.svg#icon-close2"></use>
       </svg>
     </button>
-    <div class="movie-box">
+    <div class="movie-box login-wrapper">
       <form>
         <label>
-          Email
-          <input type="email" name="email" class="email" required />
+          <input class="search-form__input login-form" type="email" name="email" class="email" required placeholder="Please enter your email"/>
         </label>
         <label>
-          Password
-          <input type="password" name="password" class="password" required />
+          <input class="search-form__input login-form" type="password" name="password" class="password" required placeholder="Please enter your password"/>
         </label>
-        <button type="submit" class="sign-in">Sign in</button>
-        <button type="submit" class="sign-up">Sign up</button>
+        <button class="navigation__btn navigation__link form__btn" type="submit" class="sign-in">Sign in</button>
+        <button class="navigation__btn navigation__link form__btn" type="submit" class="sign-up">Sign up</button>
       </form>
     </div>
-  </div>
 </div>

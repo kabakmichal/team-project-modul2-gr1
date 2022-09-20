@@ -18,6 +18,7 @@
 .footer__span {
   color: $accentColor;
   text-decoration: underline;
+  
 }
 .footer__text {
   text-decoration: underline;
@@ -37,4 +38,26 @@
   border-radius: 50%;
   border: none;
   color: $mainColor;
+}
+.heart{
+  animation: pulsing 3s infinite;
+ 
+
+}
+@keyframes pulsing {
+  0% {
+
+    transform: scale(0.5, 0.5);
+  }
+
+  50% {
+
+    transform: scale(1, 1);
+  }
+
+  100% {
+
+    transform: scale(0.5, 0.5);
+
+  }
 }
