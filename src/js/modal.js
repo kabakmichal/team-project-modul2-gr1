@@ -1,4 +1,5 @@
 import { modalSet, movieModalBox } from './modalSet';
+import { addToQueue, addToWatched } from './Queue';
 
 const fetchOneMovie = key => {
   return fetch(
@@ -36,7 +37,16 @@ const fetchOneTV = key => {
       movie = await fetchOneMovie(movieId);
     if (event.target.offsetParent.dataset.type === 'tv')
       movie = await fetchOneTV(movieId);
-    modalSet(movie);
+    await modalSet(movie);
+    refs.modal.addEventListener("click", event => { 
+      if (event.target.dataset.name === "queue")
+        addToQueue(movie);
+      if (event.target.dataset.name === 'watched')
+        addToWatched(movie);
+
+    });
+    
+
   });
   refs.closeModalBtn.addEventListener('click', () => {
     toggleModal();
