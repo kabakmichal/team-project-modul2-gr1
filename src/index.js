@@ -6,6 +6,8 @@ import { topBtn } from './js/scrollToTop';
 import { } from './js/modal';
 import "./js/login-modal.js";
 import "./js/modal-team";
+import "./js/Queue";
+
 fetchOnStart()
   .then(data => {
     
