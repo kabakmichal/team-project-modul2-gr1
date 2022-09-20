@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 import { Notify } from "notiflix";
 
 
@@ -10,7 +10,7 @@ const email = document.querySelector(".email");
 const password = document.querySelector(".password");
 const login = document.querySelector('.log-in');
 const logOut = document.querySelector('.log-out');
-const library = document.querySelector('.library')
+let user;
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Your web app's Firebase configuration
@@ -59,17 +59,16 @@ console.log(email.value,password.value)
 signInWithEmailAndPassword(auth, email.value, password.value)
   .then((userCredential) => {
     // Signed in 
-    const user = userCredential.user;
-    login.classList.toggle('is-hidden'),
-    logOut.classList.toggle('is-hidden'),
+    user = userCredential.user,
     console.log(user),
     document.querySelector('[login-modal]').classList.toggle('is-hidden');
-    
+    Notify.success(`Hi,${user.email}, you are sign in!`);
+  
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    console.log(errorCode,errorMessage)
+    Notify.failure(`Wrong email or password!`)
   });
 })
 
@@ -79,10 +78,24 @@ logOut.addEventListener("click", (e) => {
     console.log(e.target)
     signOut(auth)
       .then(() => {
-      login.classList.toggle('is-hidden'),
-      logOut.classList.toggle('is-hidden'),
-      console.log('logged out')
+        login.classList.toggle('is-hidden'),
+          logOut.classList.toggle('is-hidden'),
+          Notify.info(`Goodbye,${user.email}, you are logged out!`);
       }).catch((error) => {
         // An error happened.
       })
 })
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    login.classList.toggle('is-hidden'),
+    logOut.classList.toggle('is-hidden'),
+    console.log(user)
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const uid = user.uid;
+    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
+});
