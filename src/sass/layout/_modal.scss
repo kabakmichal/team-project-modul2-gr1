@@ -22,9 +22,8 @@
   width: 100%;
   border-radius: 20px;
   margin: auto;
- margin-top: 20px;
-
-
+  margin-top: 20px;
+ 
   &-close-btn {
     position: relative;
     top: 10px;
@@ -36,13 +35,16 @@
     cursor: pointer;
   }
   &-btns {
-    width: 112.58px;
+    width: 136px;
     height: 44px;
     color: #000;
     text-transform: uppercase;
     background-color: #fff;
-    border: 1px solid #000;
+    border: 1px solid #ff6b08;
     border-radius: 5px;
+    font-weight: 500;
+    font-size: 12px;
+    box-shadow: 0px 2px 8px #ff6b08;
 
     &:not(:last-child) {
       margin-right: 15px;
@@ -58,7 +60,8 @@
     &--wrapper {
       display: flex;
       justify-content: center;
-      margin-top: 20px;
+      margin-top: 35px;
+      margin-bottom: 10px;
     }
   }
 }
@@ -95,6 +98,7 @@
 
   &-details {
     margin-bottom: 20px;
+    font-weight: 500;
   }
 }
 
@@ -105,20 +109,28 @@
     height: auto;
     margin-bottom: 30px;
     border-radius: 20px;
+    box-shadow: 0px 0px 20px 3px;
   }
-  &-details-li {
-    grid-template-columns: 90px 1fr;
-    gap: 18px;
-    display: grid;
-    margin: 10px 0 10px 0;
-  }
+  &-details {
+    &-vote {
+      padding: 0 5px;
+      background-color: #ff6b08;
+      border-radius: 5px;
+    }
+    &-li {
+      grid-template-columns: 90px 1fr;
+      gap: 18px;
+      display: grid;
+      margin: 10px 0 10px 0;
+    }
 
-  &-details-label {
-    color: #8c8c8c;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 1.333;
-    display: block;
+    &-label {
+      color: #8c8c8c;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.333;
+      display: block;
+    }
   }
   &-about {
     &-label {
@@ -152,6 +164,8 @@
   .modal__movie {
     max-width: 618px;
     width: 100%;
+    margin-top: 231px;
+
     &-box-photo {
       max-width: 264px;
       width: 100%;
@@ -166,6 +180,7 @@
   .modal__movie {
     max-width: 280px;
     width: 100%;
+    margin-top: 20px;
     &-box {
       margin: auto 20px;
       &-photo {
