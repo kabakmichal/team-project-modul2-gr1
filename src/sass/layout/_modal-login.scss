@@ -1,0 +1,28 @@
+
+.login-wrapper{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+.form__btn {
+    margin: 50px 25px 10px;
+    display: inline-block;
+  
+}
+
+.modal-login {
+    background-color: $footerBg;
+    height: auto;
+    width: 280px;
+    padding-top: 25px;
+
+}
+
+.login-form {
+    margin-bottom: 25px;
+    margin-top: 50px;
+    width: 250px;
+    font-size: 12px;
+    color: black;
+   
+}
