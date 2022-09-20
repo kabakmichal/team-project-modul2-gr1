@@ -45,14 +45,22 @@ const fetchOneTV = key => {
         addToWatched(movie);
 
     });
-    
-
   });
+
+  document.addEventListener('keydown', e => {
+  if (e.code === 'Escape') {
+    refs.modal.classList.add('is-hidden');
+  }
+});
   refs.closeModalBtn.addEventListener('click', () => {
     toggleModal();
     movieModalBox.innerHTML = '';
   });
-
+  document.addEventListener('click', event => {
+  if (event.target.matches('[data-modal-close]') || !event.target.closeSet('[data-modal]')) {
+    refs.modal.classList.add('is-hidden');
+  }
+});
   function toggleModal() {
     refs.modal.classList.toggle('is-hidden');
   }
