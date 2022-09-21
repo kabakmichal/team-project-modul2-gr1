@@ -22,6 +22,8 @@
   border-radius: 20px;
   margin: auto;
   margin-top: 20px;
+  max-height: 95%;
+  overflow-y: auto;
 
   &-close-btn {
     position: relative;
@@ -43,6 +45,7 @@
     border-radius: 5px;
     font-weight: 500;
     font-size: 12px;
+    cursor: pointer;
     box-shadow: 0px 2px 8px $accentColor;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 
