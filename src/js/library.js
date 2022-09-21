@@ -1,12 +1,13 @@
 // import { movieSet } from './movieSet';
-import { getGenre } from './getGenre';
+import './modal-team';
+import './login-modal.js';
+import './modal';
 import '../sass/index.scss';
 
-const myList = document.querySelector('.my-list');
+const myList = document.querySelector('.gallery');
 
 const movieSetLibrary = async data => {
   myList.innerHTML = '';
-  const genreDict = await getGenre();
 
   const markup = data
     .map(
@@ -36,7 +37,7 @@ const movieSetLibrary = async data => {
                 .splice(0, 2)
                 .join(', ')}</span>
           </p>
-          <p class="movie-card__year">| ${filmDate.slice(0, 4)}
+          <p class="movie-card__year">| ${filmDate.slice(0, 4)|| ""}
               <span></span>
           </p>
       </div>
