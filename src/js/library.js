@@ -1,17 +1,16 @@
 // import { movieSet } from './movieSet';
 import './modal-team';
 import './login-modal.js';
-import './modal';
+import './libraryModal';
 import '../sass/index.scss';
 
 const myList = document.querySelector('.gallery');
-
+let situation = "";
 const movieSetLibrary = async data => {
   myList.innerHTML = '';
-
+let i = 0;
   const markup = data
     .map(
-      //trzeba dodać genre, ale mamy tylko genre_ids(cyfry)
       ({
         id,
         media_type,
@@ -24,7 +23,9 @@ const movieSetLibrary = async data => {
       }) => {
         let filmDate = release_date || first_air_date || '????';
         if (media_type === 'person') return;
-        return `<div class="movie-card" data-id="${id}" data-type="${media_type}">
+        return `<div class="movie-card" data-id="${i++}" data-type="${
+          media_type || 'movie'
+        }">
       <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" onerror="this.src = 'https://picsum.photos/id/237/274/398'";alt="image of movie" loading="lazy" />
       <div class="movie-card__info">
           <p class="movie-card__title">
@@ -37,13 +38,13 @@ const movieSetLibrary = async data => {
                 .splice(0, 2)
                 .join(', ')}</span>
           </p>
-          <p class="movie-card__year">| ${filmDate.slice(0, 4)|| ""}
+          <p class="movie-card__year">| ${filmDate.slice(0, 4) || ''}
               <span></span>
           </p>
       </div>
       </div>
   </div>
-  `;
+  `; ;
       }
     )
     .join('');
@@ -56,6 +57,7 @@ const getQueueData = async () => {
     if (queue === null) {
       return;
     }
+    situation = 'queue';
     return queue;
   } catch (error) {
     console.log(error);
@@ -68,6 +70,7 @@ const getWatchedData = async () => {
     if (watched === null) {
       return;
     }
+    situation = "watched";
     return watched;
   } catch (error) {
     console.log(error);
@@ -105,3 +108,4 @@ refs.btnQueueHeaderEl.addEventListener('click', async () => {
 });
 
 // onWatchedBtnClick();
+export { situation };
