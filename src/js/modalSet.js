@@ -4,12 +4,8 @@ let modalSet = async movie => {
   movieModalBox.innerHTML = '';
   console.log(movie);
   const {
-    id,
     imgAlt,
-    media_type,
     poster_path,
-    release_date,
-    first_air_date,
     title,
     name,
     genres,
