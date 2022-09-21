@@ -32,7 +32,7 @@ const movieSetLibrary = async data => {
       <div class= "genreDate">
           <p class="movie-card__genre">
               <span>${genres
-                .map(id => genreDict[id])
+                .map(genre => genre.name)
                 .splice(0, 2)
                 .join(', ')}</span>
           </p>

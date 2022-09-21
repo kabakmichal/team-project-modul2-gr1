@@ -1,9 +1,8 @@
 // dodanie do watchlisty
 
-const queueList = JSON.parse(localStorage.getItem('queue')) || [];
-const watchedList = JSON.parse(localStorage.getItem('watched')) || [];
-
 const addToQueue = object => {
+  if (object === '') return;
+  const queueList = JSON.parse(localStorage.getItem('queue')) || [];
   if (
     queueList.find(
       option =>
@@ -22,6 +21,10 @@ const addToQueue = object => {
 };
 
 const addToWatched = object => {
+  if (object === '') return;
+  const watchedList = JSON.parse(localStorage.getItem('watched')) || [];
+  console.log(watchedList);
+  console.log('first');
   if (
     watchedList.find(
       option =>

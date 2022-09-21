@@ -26,7 +26,7 @@ const fetchOneTV = key => {
   };
 
   // Zmienna movie przechowuje obiekt z konkretnym filmem !!!!!!!
-
+  let counter = 0;
   refs.openModalBtn.addEventListener('click', async event => {
     if (event.target.offsetParent.className !== 'movie-card') return;
     toggleModal();
@@ -38,23 +38,29 @@ const fetchOneTV = key => {
     if (event.target.offsetParent.dataset.type === 'tv')
       movie = await fetchOneTV(movieId);
     await modalSet(movie);
-    refs.modal.addEventListener("click", event => { 
-      if (event.target.dataset.name === "queue")
-        addToQueue(movie);
-      if (event.target.dataset.name === 'watched')
-        addToWatched(movie);
+    refs.modal.addEventListener('click', e => {
+      // e.preventDefault();
 
+      counter += 1;
+      console.log(counter);
+      if (e.target.dataset.name === 'queue') {
+        addToQueue(movie);
+        movie = '';
+      }
+
+      if (e.target.dataset.name === 'watched') {
+        addToWatched(movie);
+        movie = '';
+      }
     });
   });
 
   document.addEventListener('keydown', e => {
-  if (e.code === 'Escape') {
-    refs.modal.classList.add('is-hidden');
-  }
-});
+    if (e.code === 'Escape') toggleModal();
+  });
   refs.closeModalBtn.addEventListener('click', () => {
-    toggleModal();
     movieModalBox.innerHTML = '';
+    toggleModal();
   });
 
   function toggleModal() {
