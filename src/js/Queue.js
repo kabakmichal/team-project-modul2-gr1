@@ -1,9 +1,8 @@
 // dodanie do watchlisty
 
-const queueList = JSON.parse(localStorage.getItem('queue')) || [];
-const watchedList = JSON.parse(localStorage.getItem('watched')) || [];
-
 const addToQueue = object => {
+  if (object === '') return;
+  const queueList = JSON.parse(localStorage.getItem('queue')) || [];
   if (
     queueList.find(
       option =>
@@ -14,6 +13,7 @@ const addToQueue = object => {
 
   queueList.push(object);
   try {
+    console.log(queueList);
     localStorage.setItem('queue', JSON.stringify(queueList));
   } catch (error) {
     console.error('Set state error: ', error.message);
@@ -21,6 +21,10 @@ const addToQueue = object => {
 };
 
 const addToWatched = object => {
+  if (object === '') return;
+  const watchedList = JSON.parse(localStorage.getItem('watched')) || [];
+  console.log(watchedList);
+  console.log('first');
   if (
     watchedList.find(
       option =>
@@ -31,6 +35,7 @@ const addToWatched = object => {
 
   watchedList.push(object);
   try {
+    console.log(watchedList);
     localStorage.setItem('watched', JSON.stringify(watchedList));
   } catch (error) {
     console.error('Set state error: ', error.message);

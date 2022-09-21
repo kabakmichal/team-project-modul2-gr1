@@ -5,6 +5,7 @@ import '../sass/index.scss';
 const myList = document.querySelector('.my-list');
 
 const movieSetLibrary = async data => {
+  myList.innerHTML = '';
   const genreDict = await getGenre();
 
   const markup = data
@@ -31,7 +32,7 @@ const movieSetLibrary = async data => {
       <div class= "genreDate">
           <p class="movie-card__genre">
               <span>${genres
-                .map(id => genreDict[id])
+                .map(genre => genre.name)
                 .splice(0, 2)
                 .join(', ')}</span>
           </p>
@@ -102,4 +103,4 @@ refs.btnQueueHeaderEl.addEventListener('click', async () => {
   movieSetLibrary(arrayFilms);
 });
 
-onWatchedBtnClick();
+// onWatchedBtnClick();
