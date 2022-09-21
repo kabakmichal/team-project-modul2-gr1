@@ -2,7 +2,6 @@ const movieModalBox = document.querySelector('.modal__movie-box');
 
 let modalSet = async movie => {
   movieModalBox.innerHTML = '';
-  console.log(movie);
   const {
     imgAlt,
     poster_path,
