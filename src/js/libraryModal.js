@@ -2,14 +2,12 @@ import { modalSet, movieModalBox } from './modalSet';
 import { addToQueue, addToWatched } from './Queue';
 import { situation } from './library';
 
-
 (() => {
   const refs = {
     openModalBtn: document.querySelector('[data-modal-open]'),
     closeModalBtn: document.querySelector('[data-modal-close]'),
     modal: document.querySelector('[data-modal]'),
   };
-
   refs.openModalBtn.addEventListener('click', event => {
     if (event.target.offsetParent.className !== 'movie-card') return;
     toggleModal();
@@ -17,14 +15,8 @@ import { situation } from './library';
     let movie = JSON.parse(localStorage.getItem(situation))[movieId];
     modalSet(movie);
     refs.modal.addEventListener('click', e => {
-      if (e.target.dataset.name === 'queue') {
-        addToQueue(movie);
-        movie = '';
-      }
-      if (e.target.dataset.name === 'watched') {
-        addToWatched(movie);
-        movie = '';
-      }
+      if (e.target.dataset.name === 'queue') addToQueue(movie);
+      if (e.target.dataset.name === 'watched') addToWatched(movie);
     });
   });
 
@@ -40,26 +32,6 @@ import { situation } from './library';
     refs.modal.classList.toggle('is-hidden');
   }
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //const fetchOneMovie = key => {
 //   return fetch(
