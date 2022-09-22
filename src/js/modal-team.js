@@ -8,19 +8,32 @@
   refs.openModalBtn.addEventListener('click', toggleModal);
   refs.closeModalBtn.addEventListener('click', toggleModal);
 
-  document.addEventListener('keydown', e => {
-    if (e.code === 'Escape') {
-      refs.modal.classList.add('is-hidden');
-    }
-  });
-
-  //   document.addEventListener('click', event => {
-  //   if (event.target.matches('[data-modal-team-close]') || !event.target.closest('[data-modal-team]')) {
+  // document.addEventListener('keydown', e => {
+  //   if (e.code === 'Escape') {
   //     refs.modal.classList.add('is-hidden');
+  //     document.removeEventListener('keydown');
   //   }
   // });
 
-  function toggleModal() {
+  document.addEventListener('click', clickOutOfModal);
+  document.addEventListener('keydown', escapePush);
+
+  function clickOutOfModal(e) {
+    if (e.target === refs.modal)
+    {
+      toggleModal();
+    }
+  }
+
+ function escapePush(e) {
+  if(e.code === 'Escape')
+  {
+      toggleModal();
+  }
+}
+ 
+function toggleModal() {
     refs.modal.classList.toggle('is-hidden');
+    document.removeEventListener('keydown', escapePush);
   }
 })();
