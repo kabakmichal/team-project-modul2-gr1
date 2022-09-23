@@ -107,7 +107,14 @@ refs.btnQueueHeaderEl.addEventListener('click', async () => {
   movieSetLibrary(arrayFilms);
 });
 
+
 // onWatchedBtnClick();
+
 export { situation };
 
+window.onload = async function libraryOnStart(e)  {
+  e.preventDefault()
+  const arrayFilms = await getWatchedData();
+  movieSetLibrary(arrayFilms);
+};
 
