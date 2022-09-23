@@ -2,7 +2,7 @@ import './sass/index.scss';
 
 import { fetchOnStart } from './js/fetch';
 import { movieSet } from './js/movieSet';
-import { topBtn } from './js/scrollToTop';
+import './js/scrollToTop';
 import {} from './js/modal';
 import './js/login-modal.js';
 import './js/modal-team';
