@@ -24,6 +24,7 @@
   color:$inputColor;
   text-decoration: underline;
   transition: all 500ms;
+  
 
   &:hover{
     transform: scale(1.5);
@@ -45,6 +46,7 @@
   border-radius: 50%;
   border: none;
   color: $mainColor;
+  
 }
 .heart{
   animation: pulsing 3s infinite;
@@ -68,3 +70,21 @@
 
   }
 }
+
+// .footer__span::before {
+//   content: '';
+//   color: #aa3939;
+//   animation: profile 5s infinite;
+// }
+
+// @keyframes profile {
+//   0% {
+//     content: 'GoIt'
+//   }
+
+
+
+//   100% {
+//     content: 'UniqueTeam'
+//   }
+// } 
