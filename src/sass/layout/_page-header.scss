@@ -224,7 +224,7 @@ transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
     text-align: center;
-    color: $mainColor;
+    color: $mainColor; 
   }
 
   .search-form {
@@ -251,3 +251,26 @@ transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
     transform: rotate(180deg);
   }
 }
+
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+.animated{
+  background-image: linear-gradient(-225deg,
+        $accentColor 0%,
+        $mainColor 29%,
+        $accentColor 67%,
+        $mainColor 100%);
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 1s ease-in-out;
+    animation: textclip 2s linear infinite;
+}
+

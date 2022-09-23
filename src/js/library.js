@@ -108,6 +108,8 @@ refs.btnQueueHeaderEl.addEventListener('click', async () => {
 });
 
 
+// onWatchedBtnClick();
+
 export { situation };
 
 window.onload = async function libraryOnStart(e)  {
@@ -115,3 +117,4 @@ window.onload = async function libraryOnStart(e)  {
   const arrayFilms = await getWatchedData();
   movieSetLibrary(arrayFilms);
 };
+
