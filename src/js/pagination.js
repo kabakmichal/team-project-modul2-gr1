@@ -2,6 +2,8 @@ import { paginationBtns } from './fetch';
 import { inputTitle } from './fetch';
 import { fetchInput } from './fetch';
 import { movieSet } from './movieSet';
+import { toTop } from './scrollToTop';
+
 export let currentPage = 1;
 
 const pagination = async (totalPages, title, currentPage) => {
@@ -12,9 +14,9 @@ const pagination = async (totalPages, title, currentPage) => {
       let btn = document.createElement('button');
 
       if (currentPage == i) {
-        btn.classList.add("active");
+        btn.classList.add('active');
       }
-      
+
       if (i === 0) {
         btn.innerHTML = '<';
         btn.addEventListener('click', async () => {
@@ -32,6 +34,7 @@ const pagination = async (totalPages, title, currentPage) => {
             movieSet(arrayMovies);
             currentPage -= 1;
             pagination(totalPages, title, currentPage);
+            toTop();
             return currentPage;
           } catch (error) {
             console.error(error);
@@ -55,6 +58,7 @@ const pagination = async (totalPages, title, currentPage) => {
             movieSet(arrayMovies);
             currentPage += 1;
             pagination(totalPages, title, currentPage);
+            toTop();
             return currentPage;
           } catch (error) {
             console.error(error);
@@ -95,6 +99,7 @@ const pagination = async (totalPages, title, currentPage) => {
               movieSet(arrayMovies);
               currentPage = i;
               pagination(totalPages, title, currentPage);
+              toTop();
               return currentPage;
             } catch (error) {
               console.error(error);
