@@ -100,10 +100,15 @@ const refs = {
 // };
 
 refs.btnWatchedHeaderEl.addEventListener('click', async () => {
+  refs.btnWatchedHeaderEl.classList.add('choosedBtn')
+  refs.btnQueueHeaderEl.classList.remove('choosedBtn')
   const arrayFilms = await getWatchedData();
   movieSetLibrary(arrayFilms);
+  
 });
 refs.btnQueueHeaderEl.addEventListener('click', async () => {
+  refs.btnQueueHeaderEl.classList.add('choosedBtn')
+  refs.btnWatchedHeaderEl.classList.remove('choosedBtn')
   const arrayFilms = await getQueueData();
   movieSetLibrary(arrayFilms);
 });
@@ -114,6 +119,7 @@ refs.btnQueueHeaderEl.addEventListener('click', async () => {
 export { situation };
 
 window.onload = async function libraryOnStart(e)  {
+  refs.btnWatchedHeaderEl.classList.add('choosedBtn')
   e.preventDefault()
   const arrayFilms = await getWatchedData();
   movieSetLibrary(arrayFilms);
