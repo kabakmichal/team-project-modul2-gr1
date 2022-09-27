@@ -8,27 +8,41 @@ import { situation } from './library';
     closeModalBtn: document.querySelector('[data-modal-close]'),
     modal: document.querySelector('[data-modal]'),
   };
+  let clickHandler;
+  let escHandler;
   refs.openModalBtn.addEventListener('click', event => {
     if (event.target.offsetParent.className !== 'movie-card') return;
     toggleModal();
     let movieId = event.target.offsetParent.dataset.id;
     let movie = JSON.parse(localStorage.getItem(situation))[movieId];
     modalSet(movie);
-    refs.modal.addEventListener('click', e => {
+    clickHandler = e => {
       if (e.target.dataset.name === 'queue') addToQueue(movie);
       if (e.target.dataset.name === 'watched') addToWatched(movie);
-    });
+    };
+    escHandler = e => {
+      if (e.code === 'Escape') {
+        toggleModal();
+      }
+    };
+    refs.modal.addEventListener('click', clickHandler);
+    document.addEventListener('keydown', escHandler);
   });
 
-  document.addEventListener('keydown', e => {
-    if (e.code === 'Escape') toggleModal();
-  });
   refs.closeModalBtn.addEventListener('click', () => {
     movieModalBox.innerHTML = '';
     toggleModal();
   });
 
   function toggleModal() {
+    if (clickHandler) {
+      refs.modal.removeEventListener('click', clickHandler);
+      clickHandler = null;
+    }
+    if (escHandler) {
+      document.removeEventListener('keydown', escHandler);
+      escHandler = null;
+    }
     refs.modal.classList.toggle('is-hidden');
   }
 })();
