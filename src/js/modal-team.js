@@ -5,35 +5,28 @@
     modal: document.querySelector('[data-modal-team]'),
   };
 
-  refs.openModalBtn.addEventListener('click', toggleModal);
+  refs.openModalBtn.addEventListener('click', e => {
+    toggleModal();
+    document.addEventListener('keydown', escapePush);
+  });
   refs.closeModalBtn.addEventListener('click', toggleModal);
 
-  // document.addEventListener('keydown', e => {
-  //   if (e.code === 'Escape') {
-  //     refs.modal.classList.add('is-hidden');
-  //     document.removeEventListener('keydown');
-  //   }
-  // });
-
   document.addEventListener('click', clickOutOfModal);
-  document.addEventListener('keydown', escapePush);
 
   function clickOutOfModal(e) {
-    if (e.target === refs.modal)
-    {
+    if (e.target === refs.modal) {
       toggleModal();
     }
   }
 
- function escapePush(e) {
-  if(e.code === 'Escape')
-  {
+  function escapePush(e) {
+    if (e.code === 'Escape' && !refs.modal.classList.contains('is-hidden')) {
       toggleModal();
+      document.removeEventListener('keydown', escapePush);
+    }
   }
-}
- 
-function toggleModal() {
+
+  function toggleModal() {
     refs.modal.classList.toggle('is-hidden');
-    document.removeEventListener('keydown', escapePush);
   }
 })();
