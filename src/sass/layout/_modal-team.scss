@@ -10,9 +10,9 @@
 }
 
 .modal-team__wrapper {
-  margin-bottom: 30px;
-  margin-top: 4px;
+  margin: 4px auto 30px auto;
   position: relative;
+  width: 900px;
 }
 
 .modal-team__item {
@@ -125,6 +125,29 @@
   justify-content: center;
 }
 
+@media (min-width: 0px) and (max-width: 480px) {
+.modal-team {
+    max-width: 280px;
+      width: 100%;
+  }
+
+  .modal-team__wrapper {
+  max-width: 280px;
+    width: 100%;
+  }
+}
+@media (min-width: 480px) and (max-width: 768px){
+
+  .modal-team {
+      max-width: 618px;
+        width: 100%;
+    }
+  
+    .modal-team__wrapper {
+      max-width: 618px;
+        width: 100%;
+    }
+}
 @media (min-width: 768px) and (max-width: 1023px) {
   .modal-team__list {
     display: flex;
@@ -141,6 +164,9 @@
   .modal-team {
     width: 600px;
   }
+    .modal-team__wrapper {
+      width: 600px;
+    }
 }
 
 @media screen and (min-width: 1024px) {
