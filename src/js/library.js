@@ -1,6 +1,5 @@
 // import { movieSet } from './movieSet';
 import './modal-team';
-import './login-modal.js';
 import './libraryModal';
 import '../sass/index.scss';
 import './scrollToTop';
