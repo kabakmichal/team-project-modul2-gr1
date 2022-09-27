@@ -54,7 +54,8 @@
     }
 
     &:hover,
-    &:active {
+    &:active,
+    &:focus {
       background: $accentColor;
       border-color: $accentColor;
       color: $mainColor;
