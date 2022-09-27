@@ -1,5 +1,10 @@
 import { modalSet, movieModalBox } from './modalSet';
-import { addToQueue, addToWatched } from './Queue';
+import {
+  addToQueue,
+  addToWatched,
+  removeFromWatched,
+  removeFromQueue,
+} from './Queue';
 import { situation } from './library';
 
 (() => {
@@ -18,11 +23,15 @@ import { situation } from './library';
     modalSet(movie);
     clickHandler = e => {
       if (e.target.dataset.name === 'queue') addToQueue(movie);
+      if (e.target.dataset.name === 'removeQueue') removeFromQueue(movie);
       if (e.target.dataset.name === 'watched') addToWatched(movie);
+      if (e.target.dataset.name === 'removeWatched') removeFromWatched(movie);
+      modalSet(movie);
     };
     escHandler = e => {
       if (e.code === 'Escape') {
         toggleModal();
+        location.reload();
       }
     };
     refs.modal.addEventListener('click', clickHandler);
@@ -32,6 +41,7 @@ import { situation } from './library';
   refs.closeModalBtn.addEventListener('click', () => {
     movieModalBox.innerHTML = '';
     toggleModal();
+    location.reload();
   });
 
   function toggleModal() {
