@@ -25,6 +25,7 @@ const fetchOneTV = key => {
     modal: document.querySelector('[data-modal]'),
   };
   let clickHandler;
+  let escHandler;
 
   // Zmienna movie przechowuje obiekt z konkretnym filmem !!!!!!!
   let counter = 0;
@@ -43,12 +44,15 @@ const fetchOneTV = key => {
       if (e.target.dataset.name === 'queue') addToQueue(movie);
       if (e.target.dataset.name === 'watched') addToWatched(movie);
     };
+    escHandler = e => {
+      if (e.code === 'Escape') {
+        toggleModal();
+      }
+    };
     refs.modal.addEventListener('click', clickHandler);
+    document.addEventListener('keydown', escHandler);
   });
 
-  document.addEventListener('keydown', e => {
-    if (e.code === 'Escape') toggleModal();
-  });
   refs.closeModalBtn.addEventListener('click', () => {
     movieModalBox.innerHTML = '';
     toggleModal();
@@ -58,6 +62,10 @@ const fetchOneTV = key => {
     if (clickHandler) {
       refs.modal.removeEventListener('click', clickHandler);
       clickHandler = null;
+    }
+    if (escHandler) {
+      document.removeEventListener('keydown', escHandler);
+      escHandler = null;
     }
     refs.modal.classList.toggle('is-hidden');
   }
