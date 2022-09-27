@@ -1,5 +1,10 @@
 import { modalSet, movieModalBox } from './modalSet';
-import { addToQueue, addToWatched } from './Queue';
+import {
+  addToQueue,
+  addToWatched,
+  removeFromQueue,
+  removeFromWatched,
+} from './Queue';
 
 const fetchOneMovie = key => {
   return fetch(
@@ -39,7 +44,10 @@ const fetchOneTV = key => {
     await modalSet(movie);
     clickHandler = e => {
       if (e.target.dataset.name === 'queue') addToQueue(movie);
+      if (e.target.dataset.name === 'removeQueue') removeFromQueue(movie);
       if (e.target.dataset.name === 'watched') addToWatched(movie);
+      if (e.target.dataset.name === 'removeWatched') removeFromWatched(movie);
+      modalSet(movie);
     };
     escHandler = e => {
       if (e.code === 'Escape') {
