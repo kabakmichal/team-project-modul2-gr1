@@ -5,10 +5,10 @@ import '../sass/index.scss';
 import './scrollToTop';
 
 const myList = document.querySelector('.gallery');
-let situation = "";
+let situation = '';
 const movieSetLibrary = async data => {
   myList.innerHTML = '';
-let i = 0;
+  let i = 0;
   const markup = data
     .map(
       ({
@@ -44,7 +44,7 @@ let i = 0;
       </div>
       </div>
   </div>
-  `; ;
+  `;
       }
     )
     .join('');
@@ -70,7 +70,7 @@ const getWatchedData = async () => {
     if (watched === null) {
       return;
     }
-    situation = "watched";
+    situation = 'watched';
     return watched;
   } catch (error) {
     console.log(error);
@@ -99,28 +99,25 @@ const refs = {
 // };
 
 refs.btnWatchedHeaderEl.addEventListener('click', async () => {
-  refs.btnWatchedHeaderEl.classList.add('choosedBtn')
-  refs.btnQueueHeaderEl.classList.remove('choosedBtn')
+  refs.btnWatchedHeaderEl.classList.add('choosedBtn');
+  refs.btnQueueHeaderEl.classList.remove('choosedBtn');
   const arrayFilms = await getWatchedData();
   movieSetLibrary(arrayFilms);
-  
 });
 refs.btnQueueHeaderEl.addEventListener('click', async () => {
-  refs.btnQueueHeaderEl.classList.add('choosedBtn')
-  refs.btnWatchedHeaderEl.classList.remove('choosedBtn')
+  refs.btnQueueHeaderEl.classList.add('choosedBtn');
+  refs.btnWatchedHeaderEl.classList.remove('choosedBtn');
   const arrayFilms = await getQueueData();
   movieSetLibrary(arrayFilms);
 });
-
 
 // onWatchedBtnClick();
 
 export { situation };
 
-window.onload = async function libraryOnStart(e)  {
-  refs.btnWatchedHeaderEl.classList.add('choosedBtn')
-  e.preventDefault()
+window.onload = async function libraryOnStart(e) {
+  refs.btnWatchedHeaderEl.classList.add('choosedBtn');
+  e.preventDefault();
   const arrayFilms = await getWatchedData();
   movieSetLibrary(arrayFilms);
 };
-

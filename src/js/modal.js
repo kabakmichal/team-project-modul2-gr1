@@ -27,14 +27,11 @@ const fetchOneTV = key => {
   let clickHandler;
   let escHandler;
 
-  // Zmienna movie przechowuje obiekt z konkretnym filmem !!!!!!!
-  let counter = 0;
   refs.openModalBtn.addEventListener('click', async event => {
     if (event.target.offsetParent.className !== 'movie-card') return;
     toggleModal();
     let movieId = event.target.offsetParent.dataset.id;
     let movie;
-    console.log(event.target.offsetParent.dataset.type);
     if (event.target.offsetParent.dataset.type === 'movie')
       movie = await fetchOneMovie(movieId);
     if (event.target.offsetParent.dataset.type === 'tv')
